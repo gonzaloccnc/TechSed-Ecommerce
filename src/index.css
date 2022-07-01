@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.active {}
+
+#navbar-user button:hover~input {
+  @apply border border-black bg-white
+}
+
+.deploy-nav div {
+  display: none;
+}
+
+.deploy-nav:hover div {
+  display: flex;
+  flex-direction: column;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  text-align: left;
+}
