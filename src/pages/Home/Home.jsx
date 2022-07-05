@@ -1,15 +1,17 @@
-import { Link } from 'react-router-dom'
+import MainSlide from './MainSlide'
+import SalesCards from './SalesCards'
 
 const Home = () => {
   return (
-    <section className='w-full h-[80vh] bg-slate-900'>
-      <div>
-        <p>Best Prices</p>
-        <h2>Incredible Prices  on All  Your Favorites Items</h2>
-        <p>Ger more for  less on selected brands</p>
-        <Link to='/shop/shopAll'>Shop Now</Link>
-      </div>
-    </section>
+    <>
+      <section className='w-full h-[90vh] bg-home-slide1 bg-cover grid place-content-center bg-no-repeat'>
+        <MainSlide />
+      </section>
+      <section className='grid grid-cols-2 justify-items-center'>
+        <SalesCards des1='Holiday Deals' des2='Selected Smartphone Brands' title='Up to 30% off' bg='card-column' />
+        <SalesCards des1='Just In' des2='Top Headphone Brands' title='Take Your Sound Anywhere' bg='card-column2' />
+      </section>
+    </>
   )
 }
 
