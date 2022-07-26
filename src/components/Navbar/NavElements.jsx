@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom'
 
 const NavElements = () => {
   return (
-    <nav className='bg-gray-100 px-7 text-sm' id='nav-bar-elements'>
+    <nav className='bg-mycolor px-7 text-sm' id='nav-bar-elements'>
       <ul className='flex gap-7'>
         <li>
           <NavLink

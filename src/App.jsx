@@ -7,8 +7,12 @@ import NavUser from './components/Navbar/NavUser'
 import NavElements from './components/Navbar/NavElements'
 import Home from './pages/Home/Home'
 import Shop from './pages/Shop/Shop'
-import Audio from './pages/Audio/Audio'
+import Audio from './pages/Shop/Audio/Audio'
 import NotFound from './pages/error/NotFound'
+import Footer from './components/footer/Footer'
+import Messages from './components/messages/Messages'
+import ShopAll from './pages/Shop/ShopAll/ShopAll'
+import AdHelp from './components/help/AdHelp'
 
 const App = () => {
   return (
@@ -24,7 +28,7 @@ const App = () => {
         <Route path='/Contact' element={<Contact />} />
         <Route path='/helpcenter' element={<HelpCenter />} />
         <Route path='/shop/*' element={<Shop />}>
-          <Route path='shopAll' element={<h1>Shop All</h1>} />
+          <Route path='shopAll' element={<ShopAll />} />
           <Route path='computers' element={<h1>computers</h1>} />
           <Route path='tablets' element={<h1>tablets</h1>} />
           <Route path='dronesCameras' element={<h1>dronescameras</h1>} />
@@ -39,6 +43,9 @@ const App = () => {
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>
+      <AdHelp />
+      <Messages />
+      <Footer />
     </>
   )
 }

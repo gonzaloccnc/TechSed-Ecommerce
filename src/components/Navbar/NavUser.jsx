@@ -8,7 +8,7 @@ const NavUser = () => {
   return (
     <nav
       id='navbar-user'
-      className='py-2 px-6 flex items-center justify-between'
+      className='py-2 bg-white px-6 flex items-center justify-between'
     >
       <div className='flex items-center gap-12'>
         <h1 className='text-nav font-semibold tracking-wide'>

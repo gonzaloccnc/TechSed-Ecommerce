@@ -8,7 +8,9 @@
   }
 }
 
-.active {}
+a.active {
+   @apply text-blue-700
+}
 
 #navbar-user button:hover~input {
   @apply border border-black bg-white
@@ -16,6 +18,10 @@
 
 .deploy-nav div {
   display: none;
+}
+
+footer > div > div > a {
+  @apply hover:text-blue-700
 }
 
 .deploy-nav:hover div {
@@ -39,4 +45,17 @@
   @apply bg-no-repeat bg-cover bg-right
 }
 
-/*clip-path: polygon(24% 0, 100% 0, 100% 100%, 33% 100%, 15% 36%); */
+.clip-help {
+  clip-path: polygon(100% 0, 100% 100%, 6% 100%, 0 26%, 0 0);
+  background: url('./assets/HomeImages/help-center.webp');
+  height: 445px;
+  @apply bg-no-repeat bg-cover
+}
+
+#container-products{
+  display: grid;
+  justify-content: center;
+  align-items: start;
+  gap: 30px;
+  grid-template-columns: 240px 960px;
+}
