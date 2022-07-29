@@ -52,10 +52,17 @@ footer > div > div > a {
   @apply bg-no-repeat bg-cover
 }
 
-#container-products{
+#container-products {
   display: grid;
   justify-content: center;
   align-items: start;
   gap: 30px;
   grid-template-columns: 240px 960px;
+}
+
+#progress-bar input {
+  background: none;
+}
+#progress-bar input::-moz-range-thumb {
+  @apply rounded-full bg-slate-700 appearance-none
 }
