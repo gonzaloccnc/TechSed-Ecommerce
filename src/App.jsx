@@ -11,8 +11,8 @@ import Audio from './pages/Shop/Audio/Audio'
 import NotFound from './pages/error/NotFound'
 import Footer from './components/footer/Footer'
 import Messages from './components/messages/Messages'
-import ShopAll from './pages/Shop/ShopAll/ShopAll'
 import AdHelp from './components/help/AdHelp'
+import ProductsFilter from './pages/Shop/ProductsFilter'
 
 const App = () => {
   return (
@@ -28,7 +28,7 @@ const App = () => {
         <Route path='/Contact' element={<Contact />} />
         <Route path='/helpcenter' element={<HelpCenter />} />
         <Route path='/shop/*' element={<Shop />}>
-          <Route path='shopAll' element={<ShopAll />} />
+          <Route path='shopAll' element={<ProductsFilter />} />
           <Route path='computers' element={<h1>computers</h1>} />
           <Route path='tablets' element={<h1>tablets</h1>} />
           <Route path='dronesCameras' element={<h1>dronescameras</h1>} />

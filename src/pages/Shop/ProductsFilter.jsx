@@ -1,8 +1,12 @@
-import Card from '../../../components/cards/Card'
-
-const ShopAll = () => {
+import Card from '../../components/cards/Card'
+/*
+This component will be in charge of sending the filtered products according to what the user requires
+- {shopAll, Computers, phones, laptops, etc}
+*/
+const ProductsFilter = () => {
   return (
     <div className='w-full grid grid-cols-4'>
+      {/* here map the products of DataBase */}
       <Card
         product='..\src\assets\products\Tablets\sheer-Tablet-10.2.webp'
         desc='Sheer 10.2" Tablet With Wi-Fi, 32GB'
@@ -29,4 +33,4 @@ const ShopAll = () => {
   )
 }
 
-export default ShopAll
+export default ProductsFilter

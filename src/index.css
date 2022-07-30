@@ -8,8 +8,12 @@
   }
 }
 
-a.active {
+header nav a.active {
    @apply text-blue-700
+}
+
+aside nav a.active {
+  @apply text-black font-semibold
 }
 
 #navbar-user button:hover~input {

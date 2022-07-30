@@ -1,7 +1,7 @@
 import { useState } from 'react'
 const priceGap = 0.75
 
-// customize the progress css and limits the progress bar size
+// customize the progress css and limits
 const ProgressBar = () => {
   const [minor, setMinor] = useState(70)
   const [major, setMajor] = useState(85)

@@ -1,33 +1,47 @@
 import { useState } from 'react'
 import { CgMathPlus, CgMathMinus } from 'react-icons/cg'
-import ProgressBar from '../progressBar/ProgressBar'
+import Filter from '../../components/FilterShop/Filter'
+import ProgressBar from '../../components/progressBar/ProgressBar'
 
 const Aside = () => {
-  const [active, setActive] = useState(false)
+  const [togglePriceRange, setTogglePriceRange] = useState(false)
+  const [toggleFilter, setToggleFilter] = useState(false)
 
   return (
     <aside>
       <h4 className='border-b-2 py-6 border-b-mycolor text-2xl font-medium'>Filter by</h4>
       <div className='border-b-2 py-6 border-b-mycolor'>
-        <div className='flex items-center justify-between cursor-pointer'>
-          <p>Collection</p>
-          <CgMathPlus />
-        </div>
-      </div>
-      <div className='border-b-2 py-6 border-b-mycolor'>
         <div
           className='flex items-center justify-between cursor-pointer'
-          onClick={() => setActive(!active)}
+          onClick={() => setToggleFilter(!toggleFilter)}
         >
-          <p>Price</p>
+          <p>Collection</p>
           {
-            !active
+            !toggleFilter
               ? <CgMathPlus />
               : <CgMathMinus />
           }
         </div>
         {
-          active
+          toggleFilter
+            ? <Filter />
+            : ''
+        }
+      </div>
+      <div className='border-b-2 py-6 border-b-mycolor'>
+        <div
+          className='flex items-center justify-between cursor-pointer'
+          onClick={() => setTogglePriceRange(!togglePriceRange)}
+        >
+          <p>Price</p>
+          {
+            !togglePriceRange
+              ? <CgMathPlus />
+              : <CgMathMinus />
+          }
+        </div>
+        {
+          togglePriceRange
             ? <ProgressBar />
             : ''
         }
