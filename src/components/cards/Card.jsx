@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Card = ({ product, desc, price, offer }) => {
+const Card = ({ product, desc, price, offer, priceOffer }) => {
   return (
     <div className='border border-mycolor flex flex-col p-2 gap-5 relative'>
       {
@@ -18,7 +18,7 @@ const Card = ({ product, desc, price, offer }) => {
           <div className='text-xl flex gap-2 mt-2 text-purple-2'>
             <span className={offer ? 'line-through' : ''}>${price}</span>
             {
-              offer ? <span>${offer}</span> : ''
+              offer ? <span>${priceOffer}</span> : ''
             }
           </div>
         </div>

@@ -15,9 +15,9 @@ module.exports = {
         'purple-2': 'rgb(117,31,255)'
       },
       backgroundImage: {
-        'home-slide1': "url('./src/assets/HomeImages/Slide1-Clock.png')",
-        'card-column': "url('./src/assets/HomeImages/columnCard-phone.png')",
-        'card-column2': 'url(./src/assets/HomeImages/columnCard-headphones.png)'
+        'home-slide1': "url('../src/assets/HomeImages/Slide1-Clock.png')",
+        'card-column': "url('../src/assets/HomeImages/columnCard-phone.png')",
+        'card-column2': 'url(../src/assets/HomeImages/columnCard-headphones.png)'
       },
       lineHeight: {
         'em': '1.15em',

@@ -56,14 +56,14 @@ const Footer = () => {
       <div className='w-[95%] mx-auto border-t-2 border-solid border-mycolor py-8'>
         <p className='text-center text-sm font-light'>We accept the following paying methods</p>
         <div className='flex justify-around mx-auto py-10 w-4/5'>
-          <img className='w-14' src='./src/assets/payMethods/Visa.webp' />
-          <img className='w-14' src='./src/assets/payMethods/mastercard.webp' />
-          <img className='w-14' src='./src/assets/payMethods/amex.webp' />
-          <img className='w-14' src='./src/assets/payMethods/chinaunionpay.webp' />
-          <img className='w-14' src='./src/assets/payMethods/jcb.webp' />
-          <img className='w-14' src='./src/assets/payMethods/Diners.webp' />
-          <img className='w-14' src='./src/assets/payMethods/Discover.webp' />
-          <img className='w-14' src='./src/assets/payMethods/PayPal.webp' />
+          <img className='w-14' src='../src/assets/payMethods/Visa.webp' />
+          <img className='w-14' src='../src/assets/payMethods/mastercard.webp' />
+          <img className='w-14' src='../src/assets/payMethods/amex.webp' />
+          <img className='w-14' src='../src/assets/payMethods/chinaunionpay.webp' />
+          <img className='w-14' src='../src/assets/payMethods/jcb.webp' />
+          <img className='w-14' src='../src/assets/payMethods/Diners.webp' />
+          <img className='w-14' src='../src/assets/payMethods/Discover.webp' />
+          <img className='w-14' src='../src/assets/payMethods/PayPal.webp' />
         </div>
       </div>
       <div className='bg-mycolor'>

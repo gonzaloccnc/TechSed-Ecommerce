@@ -13,8 +13,22 @@ import Footer from './components/footer/Footer'
 import Messages from './components/messages/Messages'
 import AdHelp from './components/help/AdHelp'
 import ProductsFilter from './pages/Shop/ProductsFilter'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
 
 const App = () => {
+  const dispatch = useDispatch()
+
+  const getData = async () => {
+    const req = await fetch(import.meta.env.VITE_API)
+    const res = await req.json()
+    dispatch({ type: 'set/products', payload: res })
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
+
   return (
     <>
       <header>
@@ -28,18 +42,19 @@ const App = () => {
         <Route path='/Contact' element={<Contact />} />
         <Route path='/helpcenter' element={<HelpCenter />} />
         <Route path='/shop/*' element={<Shop />}>
-          <Route path='shopAll' element={<ProductsFilter />} />
-          <Route path='computers' element={<h1>computers</h1>} />
-          <Route path='tablets' element={<h1>tablets</h1>} />
-          <Route path='dronesCameras' element={<h1>dronescameras</h1>} />
+          <Route path='shopAll' element={<ProductsFilter categoryFilter='all' />} />
+          <Route path='bestSellers' element={<ProductsFilter categoryFilter='best sellers all' />} />
+          <Route path='computers' element={<ProductsFilter categoryFilter='computers' />} />
+          <Route path='tablets' element={<ProductsFilter categoryFilter='tablets' />} />
+          <Route path='dronesCameras' element={<ProductsFilter categoryFilter='drones & cameras' />} />
           <Route path='audio/*' element={<Audio />}>
-            <Route path='headphones' element={<h1>Headphones</h1>} />
-            <Route path='speakers' element={<h1>Speakers</h1>} />
+            <Route path='headphones' element={<ProductsFilter categoryFilter='headphones' />} />
+            <Route path='speakers' element={<ProductsFilter categoryFilter='speakers' />} />
           </Route>
-          <Route path='mobile' element={<h1>mobile</h1>} />
-          <Route path='tvCinema' element={<h1>tvcinema</h1>} />
-          <Route path='wearableTech' element={<h1>wearabletech</h1>} />
-          <Route path='sale' element={<h1>sale</h1>} />
+          <Route path='mobile' element={<ProductsFilter categoryFilter='phones' />} />
+          <Route path='tvCinema' element={<ProductsFilter categoryFilter='TV & Home Cinema' />} />
+          <Route path='wearableTech' element={<ProductsFilter categoryFilter='Wearable Tech' />} />
+          <Route path='sale' element={<ProductsFilter categoryFilter='sale' />} />
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>

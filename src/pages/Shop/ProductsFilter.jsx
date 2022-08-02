@@ -1,35 +1,29 @@
-import { useEffect, useState } from 'react'
-
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import Card from '../../components/cards/Card'
-/*
-This component will be in charge of sending the filtered products according to what the user requires
-- {shopAll, Computers, phones, laptops, etc}
-*/
-const ProductsFilter = () => {
-  const [data, setData] = useState([])
+import selectProducts from '../../store/filterProducts'
 
-  const getData = async () => {
-    const req = await fetch('http://localhost:4000/api/products/')
-    const myd = await req.json()
-    setData(myd)
-  }
+const ProductsFilter = ({ categoryFilter }) => {
+  const dispatch = useDispatch()
+  const products = useSelector(selectProducts)
 
   useEffect(() => {
-    getData()
-  }, [])
-
+    dispatch({ type: 'filter/set', payload: categoryFilter })
+  }, [categoryFilter])
   return (
     <div className='w-full grid grid-cols-4'>
       {
-        data.length
-          ? data.map(product => {
-            const { nameProduct, description, price, isSale, imgURL, id } = product
+        products.length
+          ? products.map(product => {
+            const { nameProduct, description, price, priceSale, isSale, imgURL, id } = product
             return (
               <Card
                 key={id}
                 product={imgURL}
                 desc={`${nameProduct} - ${description}`}
                 price={price}
+                offer={isSale}
+                priceOffer={priceSale}
               />
             )
           })
