@@ -1,53 +1,26 @@
 import Card from '../../components/cards/Card'
-import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import selectProducts from '../../store/filterProducts'
-// fix here
+import { useSelector } from 'react-redux'
+
 const ContainerSales = () => {
-  // const productsSales = useSelector(selectProducts)
-  // const distpatch = useDispatch()
-  // useEffect(() => {
-  //   distpatch({ type: 'filter/set', payload: 'sale min' })
-  // }, [])
+  const productsSales = useSelector(x => x).entities.products.filter(p => p.isSale).slice(0, 6)
 
   return (
     <div id='sale-container' className='grid grid-cols-6 w-[90%] mx-auto grid-rows-[320px]'>
-      <Card
-        product='https://ecommerce-api-practice.herokuapp.com/api/images/Tablets/SpaceS7-12p-128GB.webp'
-        desc='Space Moon Smartwatch With Charger'
-        price='85.00'
-        offer='70.00'
-      />
-      <Card
-        product='https://ecommerce-api-practice.herokuapp.com/api/images/Tablets/SpaceS7-12p-128GB.webp'
-        desc='OVE Light Space 5G, 128GB'
-        price='85.00'
-        offer='70.00'
-      />
-      <Card
-        product='https://ecommerce-api-practice.herokuapp.com/api/images/Tablets/SpaceS7-12p-128GB.webp'
-        desc='Pilates 16" Touch Screen Laptop 24GB Memory'
-        price='85.00'
-        offer='70.00'
-      />
-      <Card
-        product='https://ecommerce-api-practice.herokuapp.com/api/images/Tablets/SpaceS7-12p-128GB.webp'
-        desc='Turn5 Portable Bluetooth Speaker'
-        price='85.00'
-        offer='70.00'
-      />
-      <Card
-        product='https://ecommerce-api-practice.herokuapp.com/api/images/Tablets/SpaceS7-12p-128GB.webp'
-        desc='Journey Glass XD Virtual Reality Headset'
-        price='85.00'
-        offer='70.00'
-      />
-      <Card
-        product='https://ecommerce-api-practice.herokuapp.com/api/images/Tablets/SpaceS7-12p-128GB.webp'
-        desc='H1C Indoor Wireless 1080p Network Security Camera'
-        price='85.00'
-        offer='70.00'
-      />
+      {
+        productsSales.map(p => {
+          const { nameProduct, description, price, priceSale, isSale, imgURL, id } = p
+          return (
+            <Card
+              key={id}
+              product={imgURL}
+              desc={`${nameProduct} - ${description}`}
+              price={price}
+              offer={isSale}
+              priceOffer={priceSale}
+            />
+          )
+        })
+      }
     </div>
   )
 }

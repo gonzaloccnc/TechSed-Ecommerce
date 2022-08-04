@@ -1,14 +1,8 @@
 import Card from '../../components/cards/Card'
-import { useSelector, useDispatch } from 'react-redux'
-import selectProducts from '../../store/filterProducts'
-import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 
 const ContainerSellerCard = () => {
-  const bestSellers = useSelector(selectProducts)
-  const distpatch = useDispatch()
-  useEffect(() => {
-    distpatch({ type: 'filter/set', payload: 'best sellers min' })
-  }, [])
+  const bestSellers = useSelector(x => x).entities.products.filter(p => p.stock < 25).slice(0, 6)
 
   return (
     <div id='seller-container' className='grid grid-cols-6 w-[90%] mx-auto grid-rows-[320px]'>

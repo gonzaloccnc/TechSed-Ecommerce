@@ -1,5 +1,5 @@
 const selectProducts = state => {
-  const { products, filter } = state
+  const { entities: { products }, filter } = state
   if (filter === 'computers') {
     return products.filter(p => p.category === 'computers')
   }
@@ -26,12 +26,6 @@ const selectProducts = state => {
   }
   if (filter === 'sale') {
     return products.filter(p => p.isSale)
-  }
-  if (filter === 'sale') {
-    return products.filter(p => p.isSale).slice(0, 6)
-  }
-  if (filter === 'best sellers min') {
-    return products.filter(p => p.stock < 25).slice(0, 6)
   }
   if (filter === 'best sellers all') {
     return products.filter(p => p.stock < 25)

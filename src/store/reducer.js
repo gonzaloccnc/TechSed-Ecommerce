@@ -1,33 +1,56 @@
-const inic = {
-  products: [],
-  filter: 'all',
-  cart: []
+import { combineReducers } from 'redux'
+
+const fetching = { loading: 'iddle', error: null }
+
+const fetchingReducer = (state = fetching, action) => {
+  switch (action.type) {
+    case 'products/pending': {
+      return { ...state, loading: 'pending' }
+    }
+    case 'products/fulfilled': {
+      return { ...state, loading: 'success' }
+    }
+    case 'products/error': {
+      return { error: action.error, loading: 'rejected' }
+    }
+    default :
+      return state
+  }
 }
 
-const reducer = (state = inic, action) => {
+const filterReducer = (state = 'all', action) => {
   switch (action.type) {
+    case 'filter/set':
+      return action.payload
+    default:
+      return state
+  }
+}
+
+const productsReducer = (state = [], action) => {
+  switch (action.type) {
+    case 'products/fulfilled': {
+      return action.payload
+    }
     case 'set/products':{
-      return {
-        ...state,
-        products: [...state.products, ...action.payload]
-      }
+      return [...state, ...action.payload]
     }
     case 'all/products': {
-      return {
-        ...state,
-        products: [...state.products]
-      }
-    }
-    case 'filter/set': {
-      return {
-        ...state,
-        filter: action.payload
-      }
+      return [...state]
     }
     default:{
       return state
     }
   }
 }
+
+const reducer = combineReducers({
+  entities: combineReducers({
+    products: productsReducer,
+    status: fetchingReducer
+  }),
+  filter: filterReducer
+  // cart: []
+})
 
 export default reducer
