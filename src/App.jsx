@@ -8,7 +8,6 @@ import NavElements from './components/Navbar/NavElements'
 import Home from './pages/Home/Home'
 import Shop from './pages/Shop/Shop'
 import Audio from './pages/Shop/Audio/Audio'
-import NotFound from './pages/error/NotFound'
 import Footer from './components/footer/Footer'
 import Messages from './components/messages/Messages'
 import AdHelp from './components/help/AdHelp'
@@ -17,17 +16,21 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { fetchThunk } from './store/asyncMiddleware'
 import { selectStatus } from './store/selectStatus'
+import Spin from './components/spinner/Spin'
+import ErrorPage from './pages/error/ErrorPage'
 
 const App = () => {
   const dispatch = useDispatch()
   const status = useSelector(selectStatus)
-
   useEffect(() => {
     dispatch(fetchThunk())
   }, [])
-
+  console.log(status)
   if (status.loading === 'pending') {
-    return <p>...cargando</p>
+    return <Spin />
+  }
+  if (status.loading === 'rejected') {
+    return <ErrorPage error={status.error} />
   }
   if (status.loading === 'success') {
     return (
@@ -57,7 +60,7 @@ const App = () => {
             <Route path='wearableTech' element={<ProductsFilter categoryFilter='Wearable Tech' />} />
             <Route path='sale' element={<ProductsFilter categoryFilter='sale' />} />
           </Route>
-          <Route path='*' element={<NotFound />} />
+          <Route path='*' element={<ErrorPage error='Page not found 404' type='404' />} />
         </Routes>
         <AdHelp />
         <Messages />

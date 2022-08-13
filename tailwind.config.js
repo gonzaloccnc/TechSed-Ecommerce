@@ -11,8 +11,10 @@ module.exports = {
       },
       colors: {
         'mycolor': '#edecec',
+        'input': 'rgb(156, 154, 154)',
         'purple-cmm': '#573198',
-        'purple-2': 'rgb(117,31,255)'
+        'purple-2': 'rgb(117,31,255)',
+        'error': 'rgb(227, 0, 82)'
       },
       backgroundImage: {
         'home-slide1': "url('../src/assets/HomeImages/Slide1-Clock.png')",
