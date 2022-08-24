@@ -28,7 +28,7 @@ const Contact = () => {
           </p>
           <form action='POST' className='flex w-full mx-auto flex-wrap gap-9 items-end justify-between'>
             <TypeInput type='text' id='name' title='Name' width='50%' />
-            <TypeInput type='text' id='lastName' title='Lastname' width='50%' />
+            <TypeInput type='text' id='surname' title='Surname' width='50%' />
             <TypeInput type='text' id='email' title='Email *' width='50%' />
             <TypeInput type='text' id='affair' title='Affair' width='50%' />
             <TypeInput type='textarea' id='messageSend' title='Message' />

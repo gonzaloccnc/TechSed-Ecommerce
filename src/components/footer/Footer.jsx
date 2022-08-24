@@ -43,14 +43,14 @@ const Footer = () => {
           <NavLink to='/Contact'>Contact Us</NavLink>
           <NavLink to='/HelpCenter'>Help Center</NavLink>
           <NavLink to='/about'>About Us</NavLink>
-          <NavLink to='/about/careers'>Careers</NavLink>
+          <NavLink to='/about'>Careers</NavLink>
         </div>
         <div className='flex flex-col gap-3'>
           <h3 className='text-xl font-semibold mb-8'>Policy</h3>
           <NavLink to='/shippingReturn'>Shipping & Returns</NavLink>
           <NavLink to='/terms'>Terms & Conditions</NavLink>
           <NavLink to='/payment'>Payment Methods</NavLink>
-          <NavLink to='/faq'>FAQ</NavLink>
+          <NavLink to='/HelpCenter'>FAQ</NavLink>
         </div>
       </div>
       <div className='w-[95%] mx-auto border-t-2 border-solid border-mycolor py-8'>

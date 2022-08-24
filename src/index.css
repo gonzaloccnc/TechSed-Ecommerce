@@ -70,3 +70,11 @@ footer > div > div > a {
 #progress-bar input::-moz-range-thumb {
   @apply rounded-full bg-slate-700 appearance-none
 }
+
+#copy p {
+  @apply hidden;
+}
+
+#copy:hover p {
+  @apply block
+}
