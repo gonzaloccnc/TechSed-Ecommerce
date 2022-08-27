@@ -11,6 +11,7 @@ module.exports = {
       },
       colors: {
         'mycolor': '#edecec',
+        'opacity-black': 'rgba(0,0,0,0.6)',
         'input': 'rgb(156, 154, 154)',
         'purple-cmm': '#573198',
         'purple-2': 'rgb(117,31,255)',

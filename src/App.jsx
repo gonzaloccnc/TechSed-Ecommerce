@@ -25,7 +25,7 @@ const App = () => {
   useEffect(() => {
     dispatch(fetchThunk())
   }, [])
-  console.log(status)
+
   if (status.loading === 'pending') {
     return <Spin />
   }

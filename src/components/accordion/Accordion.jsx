@@ -12,7 +12,7 @@ const Accordion = ({ children, title }) => {
       className='border-b border-mycolor border-solid py-6 px-2'
     >
       <div
-        className='flex items-center justify-between'
+        className='flex items-center justify-between cursor-pointer'
         onClick={() => setWrap(!wrap)}
       >
         <h4>{title}</h4>

@@ -3,8 +3,13 @@ import { FaUserCircle } from 'react-icons/fa'
 import { MdOutlineFavoriteBorder } from 'react-icons/md'
 import { BsCart2 } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
+import Cart from '../cart/Cart'
 
 const NavUser = () => {
+  const [cart, setCart] = useState(false)
+  const openCart = () => setCart(!cart)
+
   return (
     <nav
       id='navbar-user'
@@ -40,13 +45,21 @@ const NavUser = () => {
           <MdOutlineFavoriteBorder fontSize='25' />
           <span className='hover:text-slate-700'>Favorites</span>
         </Link>
-        <Link to='/mycart' className='inline-flex items-center gap-2'>
+        <p
+          className='inline-flex items-center gap-2'
+          onClick={openCart}
+        >
           <BsCart2 fontSize='25' />
           <span className='text-white grid place-content-center text-xs w-4 h-4 rounded-full bg-black'>
             0
           </span>
-        </Link>
+        </p>
       </div>
+      {
+        cart
+          ? <Cart fn={openCart} />
+          : ''
+      }
     </nav>
   )
 }

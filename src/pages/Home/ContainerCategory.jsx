@@ -32,7 +32,7 @@ const ContainerCategory = () => {
       <CardRounded
         categoryImg='https://ecommerce-api-practice.herokuapp.com/api/images/Category/category-seller.png'
         category='Best Sellers'
-        path='shop/sale'
+        path='shop/bestSellers'
       />
       <CardRounded
         categoryImg='https://ecommerce-api-practice.herokuapp.com/api/images/TVHomeCinema/Allure-55p-LED4KUHD.webp'

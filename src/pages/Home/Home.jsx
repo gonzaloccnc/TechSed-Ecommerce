@@ -8,7 +8,7 @@ import ContainerSellerCard from './ContainerSellerCard'
 import BusinessFeatures from './BusinessFeatures'
 import ContainerCategory from './ContainerCategory'
 import ContainerSales from './ContainerSales'
-import Brand from '../../components/brands/Brand'
+import Brand from './Brand'
 import Subscribe from '../../components/Subscribe/Subscribe'
 
 const Home = () => {
@@ -54,7 +54,7 @@ const Home = () => {
         <h1 className='text-center text-3xl font-semibold py-14'>Best Sellers</h1>
         <ContainerSellerCard />
         <div className='py-14 grid place-content-center'>
-          <Button path='/shop/sale' w='w-64'>View All</Button>
+          <Button path='/shop/bestSellers' w='w-64'>View All</Button>
         </div>
       </section>
       <section className='bg-white w-[95%] mx-auto my-10 py-14'>
@@ -102,7 +102,7 @@ const Home = () => {
               See product detail pages for availability.
             </span>
             <div className='mt-10'>
-              <Button path='shop/computers' w='w-44'>Shop</Button>
+              <Button path='shop/dronesCameras' w='w-44'>Shop</Button>
             </div>
           </div>
         </div>

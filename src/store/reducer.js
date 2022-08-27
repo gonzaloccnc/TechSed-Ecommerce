@@ -44,13 +44,22 @@ const productsReducer = (state = [], action) => {
   }
 }
 
+const cartReducer = (state = [], action) => {
+  switch (action.type) {
+    case 'set/cart':
+      return state
+    default:
+      return state
+  }
+}
+
 const reducer = combineReducers({
   entities: combineReducers({
     products: productsReducer,
     status: fetchingReducer
   }),
-  filter: filterReducer
-  // cart: []
+  filter: filterReducer,
+  cart: cartReducer
 })
 
 export default reducer
