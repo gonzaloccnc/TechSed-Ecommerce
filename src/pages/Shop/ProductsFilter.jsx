@@ -10,6 +10,7 @@ const ProductsFilter = ({ categoryFilter }) => {
   useEffect(() => {
     dispatch({ type: 'filter/set', payload: categoryFilter })
   }, [categoryFilter])
+
   return (
     <div className='w-full grid grid-cols-4'>
       {
@@ -19,6 +20,7 @@ const ProductsFilter = ({ categoryFilter }) => {
             return (
               <Card
                 key={id}
+                id={id}
                 product={imgURL}
                 desc={`${nameProduct} - ${description}`}
                 price={price}

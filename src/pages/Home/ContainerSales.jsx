@@ -12,6 +12,7 @@ const ContainerSales = () => {
           return (
             <Card
               key={id}
+              id={id}
               product={imgURL}
               desc={`${nameProduct} - ${description}`}
               price={price}

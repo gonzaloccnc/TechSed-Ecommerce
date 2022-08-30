@@ -2,7 +2,7 @@ import TypeInput from '../../components/inputs/TypeInput'
 
 const About = () => {
   return (
-    <main className='bg-white py-16'>
+    <main className='bg-white py-16 mt-[164.5px]'>
       <h1 className='text-center text-5xl font-semibold pb-28'>About TechSed</h1>
       <div id='about-des' className='flex py-16 border-y-2 gap-10 items-center border-solid border-mycolor w-4/5 h-[700px] mx-auto'>
         <img src='./src/assets/about/about.webp' className='w-3/6 h-full' />
@@ -24,7 +24,7 @@ const About = () => {
         </p>
         <form action='POST' className='flex w-[804px] mx-auto flex-wrap gap-9 items-end justify-between'>
           <TypeInput type='text' id='name' title='Name' />
-          <TypeInput type='text' id='lastName' title='Lastname' />
+          <TypeInput type='text' id='surname' title='Surname' />
           <TypeInput type='text' id='email' title='Email *' />
           <TypeInput type='text' id='phone' title='Phone' />
           <TypeInput type='select' id='positionApply' title='Position you are applying for' />

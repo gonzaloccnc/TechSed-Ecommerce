@@ -18,6 +18,7 @@ import { fetchThunk } from './store/asyncMiddleware'
 import { selectStatus } from './store/selectStatus'
 import Spin from './components/spinner/Spin'
 import ErrorPage from './pages/error/ErrorPage'
+import Products from './components/products/Products'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -35,7 +36,7 @@ const App = () => {
   if (status.loading === 'success') {
     return (
       <>
-        <header>
+        <header className='fixed w-full z-50 top-0 left-0'>
           <NavBar />
           <NavUser />
           <NavElements />
@@ -60,6 +61,7 @@ const App = () => {
             <Route path='wearableTech' element={<ProductsFilter categoryFilter='Wearable Tech' />} />
             <Route path='sale' element={<ProductsFilter categoryFilter='sale' />} />
           </Route>
+          <Route path='/products/:id' element={<Products />} />
           <Route path='*' element={<ErrorPage error='Page not found 404' type='404' />} />
         </Routes>
         <AdHelp />

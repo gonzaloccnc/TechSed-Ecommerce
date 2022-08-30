@@ -11,7 +11,7 @@ const HelpCenter = () => {
   }
 
   return (
-    <main className='py-14 bg-white'>
+    <main className='py-14 bg-white mt-[164.5px]'>
       <h1 className='text-center text-5xl font-semibold pb-28'>TechSed Support</h1>
       <div className='w-4/5 mx-auto'>
         <div className='w-full flex justify-around items-center mb-4'>

@@ -3,7 +3,7 @@ import Subscribe from '../../components/Subscribe/Subscribe'
 
 const Contact = () => {
   return (
-    <main className='py-14 bg-white'>
+    <main className='py-14 bg-white mt-[164.5px]'>
       <h1 className='text-center text-5xl font-semibold pb-28'>Contact Us</h1>
       <div id='contact' className='flex py-16 border-t-2 gap-10 items-center border-solid border-mycolor w-4/5 h-[700px] mx-auto'>
         <div className='w-1/2 h-full'>

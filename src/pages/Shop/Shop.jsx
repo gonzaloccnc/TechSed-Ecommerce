@@ -8,7 +8,7 @@ const Shop = ({ pageTitle = 'Shop All' }) => {
   const [toggleSort, setToggleSort] = useState(false)
 
   return (
-    <main className='bg-white pb-20'>
+    <main className='bg-white pb-20 mt-[164.5px]'>
       <h1 className='text-5xl font-semibold text-center pt-16 pb-8'>{pageTitle}</h1>
       <section id='container-products'>
         <Aside />

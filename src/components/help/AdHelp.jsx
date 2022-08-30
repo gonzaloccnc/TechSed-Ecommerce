@@ -8,7 +8,7 @@ const AdHelp = () => {
         <p>
           I'm a paragraph. Click here to add your own text and edit me. Let your users get to know you.
         </p>
-        <Button path='helpCenter' w='w-44'>Go to Help Center</Button>
+        <Button path='helpCenter' w='w-44' hover>Go to Help Center</Button>
       </div>
       <div className='w-[55%] clip-help' />
     </section>

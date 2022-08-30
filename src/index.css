@@ -8,8 +8,12 @@
   }
 }
 
-header nav a.active {
-   @apply text-blue-700
+#card:hover img {
+  @apply scale-125
+}
+
+header nav a.active, footer .lnk-products a.active {
+   @apply text-purple-2
 }
 
 aside nav a.active {
@@ -24,8 +28,8 @@ aside nav a.active {
   display: none;
 }
 
-footer > div > div > a {
-  @apply hover:text-blue-700
+footer .lnk-products a {
+  @apply hover:text-purple-2
 }
 
 .deploy-nav:hover div {

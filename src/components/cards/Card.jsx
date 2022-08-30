@@ -1,17 +1,16 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Card = ({ product, desc, price, offer, priceOffer }) => {
+const Card = ({ product, desc, price, offer, priceOffer, id }) => {
   return (
-    <div className='border border-mycolor flex flex-col p-2 gap-5 relative'>
+    <div className='border border-input flex flex-col p-2 gap-5 relative' id='card'>
       {
         offer
           ? <p className='z-40 bg-red-600 absolute text-white px-3 top-0 left-0'>SALE</p>
           : ''
       }
-      <Link to='/products/' className='h-full'>
+      <Link to={`/products/${id}`} className='h-full'>
         <div className='overflow-hidden w-full'>
-          <img src={product} className='object-cover hover:scale-125 transition-all ease-freeze' />
+          <img src={product} className='object-cover transition-all ease-freeze' />
         </div>
         <div>
           <p className='w-[90%]'>{desc}</p>

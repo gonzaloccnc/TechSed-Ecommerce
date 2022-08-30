@@ -26,7 +26,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div className='flex flex-col gap-3'>
+        <div className='flex flex-col gap-3 lnk-products'>
           <h3 className='text-xl font-semibold mb-8'>Shop</h3>
           <NavLink to='/shop/shopAll'>Shop All</NavLink>
           <NavLink to='/shop/computers'>Computers</NavLink>

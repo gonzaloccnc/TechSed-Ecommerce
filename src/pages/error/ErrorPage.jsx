@@ -1,7 +1,7 @@
 
 const ErrorPage = ({ error, type }) => {
   return (
-    <div className='w-full h-[600px] bg-purple-cmm text-white text-center py-5'>
+    <div className='w-full h-[600px] bg-purple-cmm text-white text-center py-5 mt-[164.5px]'>
       <div className='w-full flex flex-col justify-center items-center gap-3 text-center'>
         <div className='flex items-center gap-3'>
           {

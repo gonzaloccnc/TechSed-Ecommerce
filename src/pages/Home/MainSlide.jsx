@@ -2,7 +2,7 @@ import Button from '../../components/button/Button'
 
 const MainSlide = () => {
   return (
-    <section className='w-full h-[90vh] bg-home-slide1 bg-cover grid place-content-center bg-no-repeat'>
+    <section className='w-full h-[90vh] bg-home-slide1 bg-cover grid place-content-center bg-no-repeat mt-[164.5px]'>
       <div className='-translate-x-1/2'>
         <p className='bg-red-700 inline-flex text-white px-2 text-lg'>Best Prices</p>
         <h2 className='my-5 text-6xl font-semibold tracking-wide leading-em'>Incredible Prices<br />on All Your<br />Favorites Items</h2>
