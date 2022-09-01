@@ -23,6 +23,7 @@ import Products from './components/products/Products'
 const App = () => {
   const dispatch = useDispatch()
   const status = useSelector(selectStatus)
+
   useEffect(() => {
     dispatch(fetchThunk())
   }, [])
@@ -36,7 +37,7 @@ const App = () => {
   if (status.loading === 'success') {
     return (
       <>
-        <header className='fixed w-full z-50 top-0 left-0'>
+        <header className='fixed w-full z-[100] top-0 left-0'>
           <NavBar />
           <NavUser />
           <NavElements />

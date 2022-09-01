@@ -46,8 +46,15 @@ const productsReducer = (state = [], action) => {
 
 const cartReducer = (state = [], action) => {
   switch (action.type) {
-    case 'set/cart':
-      return state
+    case 'set/cart':{
+      const exist = state.some(x => x.id === action.payload.id)
+      if (exist) {
+        const prd = state.find(x => x.id === action.payload.id)
+        prd.amount += action.payload.amount
+        return [...state]
+      }
+      return [...state, action.payload]
+    }
     default:
       return state
   }

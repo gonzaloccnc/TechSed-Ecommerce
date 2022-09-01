@@ -5,10 +5,13 @@ import { BsCart2 } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import Cart from '../cart/Cart'
+import { useSelector } from 'react-redux'
+import { selectCart } from '../../store/selectStatus'
 
 const NavUser = () => {
   const [cart, setCart] = useState(false)
   const openCart = () => setCart(!cart)
+  const cartSize = useSelector(selectCart).length
 
   return (
     <nav
@@ -51,7 +54,7 @@ const NavUser = () => {
         >
           <BsCart2 fontSize='25' />
           <span className='text-white grid place-content-center text-xs w-4 h-4 rounded-full bg-black'>
-            0
+            {cartSize}
           </span>
         </p>
       </div>
