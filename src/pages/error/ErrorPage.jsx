@@ -1,7 +1,14 @@
+import { motion } from 'framer-motion'
 
 const ErrorPage = ({ error, type }) => {
   return (
-    <div className='w-full h-[600px] bg-purple-cmm text-white text-center py-5 mt-[164.5px]'>
+    <motion.div
+      className='w-full h-[600px] bg-purple-cmm text-white text-center py-5 mt-[164.5px]'
+      initial={{ opacity: 0 }}
+      transition={{ ease: 'easeInOut', duration: 0.5 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <div className='w-full flex flex-col justify-center items-center gap-3 text-center'>
         <div className='flex items-center gap-3'>
           {
@@ -27,7 +34,7 @@ const ErrorPage = ({ error, type }) => {
         </h1>
       </div>
       <p className='mt-5 text-sm text-black'>{error}</p>
-    </div>
+    </motion.div>
   )
 }
 

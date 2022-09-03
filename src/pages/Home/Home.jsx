@@ -10,10 +10,16 @@ import ContainerCategory from './ContainerCategory'
 import ContainerSales from './ContainerSales'
 import Brand from './Brand'
 import Subscribe from '../../components/Subscribe/Subscribe'
+import { motion } from 'framer-motion'
 
 const Home = () => {
   return (
-    <>
+    <motion.main
+      initial={{ opacity: 0 }}
+      transition={{ ease: 'easeInOut', duration: 0.5 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <MainSlide />
       <section className='grid grid-cols-2 justify-items-center my-10'>
         <SalesCards
@@ -118,7 +124,7 @@ const Home = () => {
         </div>
       </section>
       <Subscribe marginTop='mt-10' marginBottom='mb-20' />
-    </>
+    </motion.main>
   )
 }
 

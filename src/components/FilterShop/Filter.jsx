@@ -2,7 +2,9 @@ import { NavLink } from 'react-router-dom'
 
 const Filter = () => {
   return (
-    <nav className='mt-3 text-sm flex flex-col gap-1'>
+    <nav
+      className='mt-3 text-sm flex flex-col gap-1'
+    >
       <NavLink to='/shop/shopAll' className='text-slate-800 hover:text-slate-500'>All</NavLink>
       <NavLink to='/shop/sale' className='text-slate-800 hover:text-slate-500'>Sale</NavLink>
       <NavLink to='/shop/bestSellers' className='text-slate-800 hover:text-slate-500'>Best Sellers</NavLink>

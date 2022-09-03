@@ -1,8 +1,15 @@
 import TypeInput from '../../components/inputs/TypeInput'
+import { motion } from 'framer-motion'
 
 const About = () => {
   return (
-    <main className='bg-white py-16 mt-[164.5px]'>
+    <motion.main
+      className='bg-white py-16 mt-[164.5px]'
+      initial={{ opacity: 0 }}
+      transition={{ ease: 'easeInOut', duration: 0.5 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <h1 className='text-center text-5xl font-semibold pb-28'>About TechSed</h1>
       <div id='about-des' className='flex py-16 border-y-2 gap-10 items-center border-solid border-mycolor w-4/5 h-[700px] mx-auto'>
         <img src='./src/assets/about/about.webp' className='w-3/6 h-full' />
@@ -33,7 +40,7 @@ const About = () => {
           <button className='w-1/5 h-12 text-white bg-purple-2  grid place-content-center py-3 rounded-full hover:bg-black transition duration-300 ease-freeze'>Send</button>
         </form>
       </div>
-    </main>
+    </motion.main>
   )
 }
 

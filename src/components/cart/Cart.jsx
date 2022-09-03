@@ -2,12 +2,16 @@ import { IoMdArrowDropright } from 'react-icons/io'
 import { useSelector } from 'react-redux'
 import { selectCart } from '../../store/selectStatus'
 import ProductCart from './ProductCart'
-
+import { motion } from 'framer-motion'
 const Cart = ({ fn }) => {
   const myCart = useSelector(selectCart)
   return (
-    <div className='w-full bg-opacity-black flex justify-end h-screen fixed top-0 left-0 z-50'>
-      <div className='w-[350px] h-full bg-white'>
+    <div className='w-full bg-opacity-black h-screen fixed top-0 left-0 z-50'>
+      <motion.div
+        className='w-[350px] h-full bg-white absolute -right-[350px]'
+        animate={{ x: -350 }}
+        transition={{ ease: 'easeOut', duration: 0.5 }}
+      >
         <header
           className='text-white flex items-center text-3xl  px-4 gap-24 h-[100px] bg-black font-light cursor-pointer'
           onClick={fn}
@@ -36,7 +40,7 @@ const Cart = ({ fn }) => {
               })
           }
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }
