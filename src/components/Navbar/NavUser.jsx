@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import Cart from '../cart/Cart'
 import { useSelector } from 'react-redux'
-import { selectCart } from '../../store/selectStatus'
+import { selectCart } from '../../helpers/selectStatus'
 
 const NavUser = () => {
   const [cart, setCart] = useState(false)

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Card from '../../components/cards/Card'
-import selectProducts from '../../store/filterProducts'
+import selectProducts from '../../helpers/filterProducts'
 import { motion } from 'framer-motion'
 
 const ProductsFilter = ({ categoryFilter }) => {

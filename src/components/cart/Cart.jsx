@@ -1,6 +1,6 @@
 import { IoMdArrowDropright } from 'react-icons/io'
 import { useSelector } from 'react-redux'
-import { selectCart } from '../../store/selectStatus'
+import { selectCart } from '../../helpers/selectStatus'
 import ProductCart from './ProductCart'
 import { motion } from 'framer-motion'
 const Cart = ({ fn }) => {
