@@ -30,6 +30,25 @@ const selectProducts = state => {
   if (filter === 'best sellers all') {
     return products.filter(p => p.stock < 25)
   }
+  if (filter === 'most new') {
+    return products.filter(p => p.stock > 15)
+  }
+  if (filter === 'low to high') {
+    const sort = [...products].sort((a, b) => (a.priceSale || a.price) - (b.priceSale || b.price))
+    return sort
+  }
+  if (filter === 'high to low') {
+    const sort = [...products].sort((a, b) => (b.priceSale || b.price) - (a.priceSale || b.price))
+    return sort
+  }
+  if (filter === 'AZ') {
+    const sort = [...products].sort((a, b) => a.nameProduct.toLowerCase().localeCompare(b.nameProduct.toLowerCase()))
+    return sort
+  }
+  if (filter === 'ZA') {
+    const sort = [...products].sort((a, b) => b.nameProduct.toLowerCase().localeCompare(a.nameProduct.toLowerCase()))
+    return sort
+  }
   return products
 }
 

@@ -6,22 +6,72 @@
   html {
     background: #edecec;
   }
+
+  .slider {
+    height: 5px;
+    border-radius: 5px;
+    background: #ddd;
+    position: relative;
+  }
+
+  .slider .progress {
+    height: 5px;
+    border-radius: 5px;
+    background: #17a2b8;
+    position: absolute;
+    left: 25%;
+    right: 25%;
+  }
+
+  .range-input {
+    position: relative;
+  }
+
+  .range-input input {
+    position: absolute;
+    top: -5px;
+    height: 5px;
+    width: 100%;
+    background: none;
+    pointer-events: none;
+    -webkit-appearance: none;
+  }
+
+  .range-input input::-webkit-slider-thumb {
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    pointer-events: auto;
+    -webkit-appearance: none;
+    background: #17a2b8;
+  }
+
+  .range-input input::-moz-range-thumb {
+    height: 17px;
+    width: 17px;
+    border: none;
+    border-radius: 50%;
+    pointer-events: auto;
+    -moz-appearance: none;
+    background: #17a2b8;
+  }
 }
 
 #card:hover img {
-  @apply scale-125
+  @apply scale-125;
 }
 
-header nav a.active, footer .lnk-products a.active {
-   @apply text-purple-2
+header nav a.active,
+footer .lnk-products a.active {
+  @apply text-purple-2;
 }
 
 aside nav a.active {
-  @apply text-black font-semibold
+  @apply text-black font-semibold;
 }
 
-#navbar-user button:hover~input {
-  @apply border border-black bg-white
+#navbar-user button:hover ~ input {
+  @apply border border-black bg-white;
 }
 
 .deploy-nav div {
@@ -29,7 +79,7 @@ aside nav a.active {
 }
 
 footer .lnk-products a {
-  @apply hover:text-purple-2
+  @apply hover:text-purple-2;
 }
 
 .deploy-nav:hover div {
@@ -43,21 +93,21 @@ footer .lnk-products a {
 
 .clip-figure {
   clip-path: polygon(0 0, 80% 0%, 97% 100%, 0% 100%);
-  background: url('./assets/HomeImages/bestPrice.webp');
-  @apply bg-no-repeat bg-cover
+  background: url("./assets/HomeImages/bestPrice.webp");
+  @apply bg-no-repeat bg-cover;
 }
 
 .clip-figure-2 {
   clip-path: polygon(10% 0, 100% 0, 100% 100%, 20% 100%);
-  background: url('./assets/HomeImages/sepcial-day-drone.webp');
-  @apply bg-no-repeat bg-cover bg-right
+  background: url("./assets/HomeImages/sepcial-day-drone.webp");
+  @apply bg-no-repeat bg-cover bg-right;
 }
 
 .clip-help {
   clip-path: polygon(100% 0, 100% 100%, 6% 100%, 0 26%, 0 0);
-  background: url('./assets/HomeImages/help-center.webp');
+  background: url("./assets/HomeImages/help-center.webp");
   height: 445px;
-  @apply bg-no-repeat bg-cover
+  @apply bg-no-repeat bg-cover;
 }
 
 #container-products {
@@ -72,7 +122,7 @@ footer .lnk-products a {
   background: none;
 }
 #progress-bar input::-moz-range-thumb {
-  @apply rounded-full bg-slate-700 appearance-none
+  @apply rounded-full bg-slate-700 appearance-none;
 }
 
 #copy p {
@@ -80,5 +130,5 @@ footer .lnk-products a {
 }
 
 #copy:hover p {
-  @apply block
+  @apply block;
 }

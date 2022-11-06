@@ -17,7 +17,7 @@ const productsReducer = createSlice({
 
   extraReducers (builder) {
     builder
-      .addCase(fetchAsyncThunk.pending, (state, action) => {
+      .addCase(fetchAsyncThunk.pending, (state) => {
         state.status = 'loading'
       })
       .addCase(fetchAsyncThunk.fulfilled, (state, action) => {

@@ -1,32 +1,63 @@
 import { useState } from 'react'
-const priceGap = 0.75
-
 // customize the progress css and limits
+// const priceGap = 800
 const ProgressBar = () => {
-  const [minor, setMinor] = useState(70)
-  const [major, setMajor] = useState(85)
+  const [minor, setMinor] = useState(2500)
+  const [major, setMajor] = useState(7500)
 
   const ajustMinor = (e) => {
-    // const progress = document.querySelector('#progress')
+    const progress = document.querySelector('.slider .progress')
     const valueInput = Number(e.target.value)
-    if (minor - major < priceGap) {
-      setMinor(valueInput)
-      // progress.style.left = (minor / 85) * 100 + '%'
-    }
+    progress.style.left = (minor / e.target.max) * 100 + '%'
+    setMinor(valueInput)
+    // if (major - minor !== priceGap)
   }
 
   const ajustMajor = (e) => {
     const valueInput = Number(e.target.value)
-    // const progress = document.querySelector('#progress')
-    if (major - minor > priceGap) {
-      setMajor(valueInput)
-      // progress.style.right = (major / 85) * 100 + '%'
-    }
+    const progress = document.querySelector('.slider .progress')
+    progress.style.right = 100 - (major / e.target.max) * 100 + '%'
+    setMajor(valueInput)
   }
 
   return (
     <div className='mt-6'>
-      <div id='progress-bar' className='h-1 bg-mycolor border border-solid border-mycolor w-full rounded-full mb-4 relative'>
+      <div className='slider'>
+        <div className='progress' />
+      </div>
+      <div className='range-input'>
+        <input
+          type='range'
+          className='range-min'
+          min='0'
+          max='10000'
+          value={minor}
+          step='100'
+          onInput={ajustMinor}
+        />
+        <input
+          type='range'
+          className='range-m'
+          min='0'
+          max='10000'
+          value={major}
+          step='100'
+          onInput={ajustMajor}
+        />
+      </div>
+      <div className='flex justify-between text-sm'>
+        <span>$
+          {
+            minor > major ? major.toLocaleString('en-US') : minor.toLocaleString('en-US')
+          }
+        </span>
+        <span>$
+          {
+            major < minor ? minor.toLocaleString('en-US') : major.toLocaleString('en-US')
+          }
+        </span>
+      </div>
+      {/* <div id='progress-bar' className='h-1 bg-mycolor border border-solid border-mycolor w-full rounded-full mb-4 relative'>
         <div id='progress' className='h-1 bg-blue-700 absolute w-full' />
         <input
           type='range'
@@ -52,7 +83,7 @@ const ProgressBar = () => {
       <div className='flex justify-between text-sm'>
         <span>${minor.toLocaleString('en-US')}</span>
         <span>${major.toLocaleString('en-US')}</span>
-      </div>
+      </div> */}
     </div>
   )
 }
