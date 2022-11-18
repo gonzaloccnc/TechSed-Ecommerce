@@ -2,10 +2,15 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const filterReducer = createSlice({
   name: 'filter',
-  initialState: 'all',
+  initialState: {
+    type: 'all',
+    sort: null,
+    high: null,
+    low: null
+  },
   reducers: {
     set: (state, action) => {
-      return action.payload
+      return { ...state, ...action.payload }
     }
   }
 })

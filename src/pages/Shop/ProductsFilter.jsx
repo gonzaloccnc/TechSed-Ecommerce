@@ -7,9 +7,8 @@ import { motion } from 'framer-motion'
 const ProductsFilter = ({ categoryFilter }) => {
   const dispatch = useDispatch()
   const products = useSelector(selectProducts)
-
   useEffect(() => {
-    dispatch({ type: 'filter/set', payload: categoryFilter })
+    dispatch({ type: 'filter/set', payload: { type: categoryFilter } })
   }, [categoryFilter])
 
   return (
@@ -36,7 +35,7 @@ const ProductsFilter = ({ categoryFilter }) => {
               />
             )
           })
-          : <h1>cargando....</h1>
+          : <h1>Oh no!! We have no products :(</h1>
       }
 
     </motion.div>

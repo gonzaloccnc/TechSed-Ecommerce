@@ -9,10 +9,17 @@ import ErrorPage from './pages/error/ErrorPage'
 import AnimatedRoutes from './components/routes/AnimatedRoutes'
 import { useSelector } from 'react-redux'
 import { selectError, selectStatus } from './helpers/selectStatus'
+import { useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 
 const App = () => {
   const status = useSelector(selectStatus)
   const error = useSelector(selectError)
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
 
   if (status === 'loading') {
     return <Spin />

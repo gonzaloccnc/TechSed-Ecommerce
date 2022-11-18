@@ -31,7 +31,7 @@ const Products = () => {
   const addToCart = e => {
     e.preventDefault()
     const inputAmount = Number(myref.current.children[1].children[1].value)
-    dispatch({ type: 'set/cart', payload: { ...myProduct, amount: inputAmount } })
+    dispatch({ type: 'cart/set', payload: { ...myProduct, amount: inputAmount } })
   }
 
   return (

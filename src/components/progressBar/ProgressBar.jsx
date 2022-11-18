@@ -1,23 +1,53 @@
-import { useState } from 'react'
-// customize the progress css and limits
-// const priceGap = 800
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
+const priceGap = 800
+
 const ProgressBar = () => {
-  const [minor, setMinor] = useState(2500)
-  const [major, setMajor] = useState(7500)
+  const { high, low } = useSelector(x => x.filter)
+  const [minor, setMinor] = useState(low || 2500)
+  const [major, setMajor] = useState(high || 7500)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const min = document.querySelector('.range-input .range-min')
+    const max = document.querySelector('.range-input .range-m')
+    const progress = document.querySelector('.slider .progress')
+
+    progress.style.left = (min.value / min.max) * 100 + '%'
+    progress.style.right = 100 - (max.value / max.max) * 100 + '%'
+  }, [])
 
   const ajustMinor = (e) => {
     const progress = document.querySelector('.slider .progress')
     const valueInput = Number(e.target.value)
-    progress.style.left = (minor / e.target.max) * 100 + '%'
-    setMinor(valueInput)
-    // if (major - minor !== priceGap)
+
+    if (major - minor === priceGap) {
+      if (major - valueInput >= priceGap) {
+        setMinor(valueInput)
+      }
+    } else if (major - valueInput >= priceGap) {
+      progress.style.left = (valueInput / e.target.max) * 100 + '%'
+      setMinor(valueInput)
+    }
+
+    dispatch({ type: 'filter/set', payload: { high: major, low: minor } })
   }
 
   const ajustMajor = (e) => {
     const valueInput = Number(e.target.value)
     const progress = document.querySelector('.slider .progress')
-    progress.style.right = 100 - (major / e.target.max) * 100 + '%'
-    setMajor(valueInput)
+
+    if (major - minor === priceGap) {
+      if (valueInput - minor >= priceGap) {
+        setMajor(valueInput)
+      }
+    } else if (valueInput - minor >= priceGap) {
+      progress.style.right = 100 - (valueInput / e.target.max) * 100 + '%'
+      setMajor(valueInput)
+    }
+
+    dispatch({ type: 'filter/set', payload: { high: major, low: minor } })
   }
 
   return (
@@ -33,7 +63,7 @@ const ProgressBar = () => {
           max='10000'
           value={minor}
           step='100'
-          onInput={ajustMinor}
+          onChange={ajustMinor}
         />
         <input
           type='range'
@@ -42,48 +72,13 @@ const ProgressBar = () => {
           max='10000'
           value={major}
           step='100'
-          onInput={ajustMajor}
+          onChange={ajustMajor}
         />
       </div>
       <div className='flex justify-between text-sm'>
-        <span>$
-          {
-            minor > major ? major.toLocaleString('en-US') : minor.toLocaleString('en-US')
-          }
-        </span>
-        <span>$
-          {
-            major < minor ? minor.toLocaleString('en-US') : major.toLocaleString('en-US')
-          }
-        </span>
+        <span>${minor}</span>
+        <span>${major}</span>
       </div>
-      {/* <div id='progress-bar' className='h-1 bg-mycolor border border-solid border-mycolor w-full rounded-full mb-4 relative'>
-        <div id='progress' className='h-1 bg-blue-700 absolute w-full' />
-        <input
-          type='range'
-          min='70'
-          max='85'
-          id='minor'
-          step='0.75'
-          value={minor}
-          className='absolute h-1 w-full appearance-none top-1 -translate-y-1 rounded-full'
-          onInput={ajustMinor}
-        />
-        <input
-          type='range'
-          min='70'
-          max='85'
-          id='major'
-          step='0.75'
-          value={major}
-          className='absolute h-1 w-full appearance-none top-1 -translate-y-1 rounded-full'
-          onInput={ajustMajor}
-        />
-      </div>
-      <div className='flex justify-between text-sm'>
-        <span>${minor.toLocaleString('en-US')}</span>
-        <span>${major.toLocaleString('en-US')}</span>
-      </div> */}
     </div>
   )
 }

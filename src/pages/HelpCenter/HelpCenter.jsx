@@ -8,7 +8,8 @@ const HelpCenter = () => {
 
   const changeTab = e => {
     e.preventDefault()
-    setOpenTab(!openTab)
+    if (e.target.id === 'first-tab') setOpenTab(false)
+    else setOpenTab(true)
   }
 
   return (
@@ -33,6 +34,7 @@ const HelpCenter = () => {
           <nav className='font-normal w-full px-2'>
             <a
               href='#faqs'
+              id='first-tab'
               onClick={changeTab}
               className={`mr-4 ${
                 !openTab ? 'text-purple-2' : 'text-slate-500'
@@ -42,6 +44,7 @@ const HelpCenter = () => {
             </a>
             <a
               href='#general'
+              id='second-tab'
               onClick={changeTab}
               className={`${openTab ? 'text-purple-2' : 'text-slate-500'}`}
             >

@@ -3,11 +3,13 @@ import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 import Aside from './Aside'
 import { useState, useEffect } from 'react'
 import SortBy from '../../components/Sort/SortBy'
+import { useSelector } from 'react-redux'
 
 const Shop = () => {
   const [toggleSort, setToggleSort] = useState(false)
   const location = useLocation()
   const cut = location.pathname.lastIndexOf('/') + 1
+  const filter = useSelector(state => state.filter.sort)
   const extract = location.pathname.slice(cut)
   const pageTitle = extract.match(/([A-Z]?[^A-Z]*)/g).slice(0, -1).join(' ')
 
@@ -26,7 +28,7 @@ const Shop = () => {
             className='border mb-6 border-black flex justify-around items-center py-2 w-48 cursor-pointer relative'
             onClick={() => setToggleSort(!toggleSort)}
           >
-            <p>Sort by</p>
+            <p>{filter === null ? 'Sort by' : filter}</p>
             {
               toggleSort
                 ? (
