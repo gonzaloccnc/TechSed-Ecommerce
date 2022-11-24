@@ -44,7 +44,18 @@ const selectProducts = state => {
 
     return filterProducts
   }
-  return products
+
+  let filterProducts = [...products]
+
+  if (filter.sort !== null) {
+    filterProducts = [...filterProducts].sort(sort)
+  }
+
+  if (filter.high !== null) {
+    filterProducts = [...filterProducts].filter(p => (p.priceSale || p.price) > filter.low && (p.priceSale || p.price) < filter.high)
+  }
+
+  return filterProducts
 }
 
 export default selectProducts

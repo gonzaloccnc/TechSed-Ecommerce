@@ -19,6 +19,8 @@ module.exports = {
       },
       backgroundImage: {
         'home-slide1': "url('../src/assets/HomeImages/Slide1-Clock.png')",
+        'home-slide2': "url('../src/assets/HomeImages/Slide2-phone.png')",
+        'home-slide3': "url('../src/assets/HomeImages/Slide3-laptop.png')",
         'card-column': "url('../src/assets/HomeImages/columnCard-phone.png')",
         'card-column2': 'url(../src/assets/HomeImages/columnCard-headphones.png)'
       },

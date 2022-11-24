@@ -5,12 +5,13 @@ const cartReducer = createSlice({
   initialState: [],
   reducers: {
     set: (state, action) => {
-      const exist = state.some(x => x.id === action.payload.id)
+      const exist = state.find(x => x.id === action.payload.id)
       if (exist) {
-        const prd = state.find(x => x.id === action.payload.id)
-        prd.amount += action.payload.amount
-        return [...state]
+        const updateProduct = { ...exist }
+        updateProduct.amount += action.payload.amount
+        return [...state.filter(x => x.id !== action.payload.id), updateProduct]
       }
+
       return [...state, action.payload]
     }
   }

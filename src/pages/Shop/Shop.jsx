@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from 'react-router-dom'
 import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io'
 import Aside from './Aside'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import SortBy from '../../components/Sort/SortBy'
 import { useSelector } from 'react-redux'
 
@@ -12,9 +12,6 @@ const Shop = () => {
   const filter = useSelector(state => state.filter.sort)
   const extract = location.pathname.slice(cut)
   const pageTitle = extract.match(/([A-Z]?[^A-Z]*)/g).slice(0, -1).join(' ')
-
-  useEffect(() => {
-  }, [location])
 
   return (
     <main className='bg-white pb-20 mt-[164.5px]'>

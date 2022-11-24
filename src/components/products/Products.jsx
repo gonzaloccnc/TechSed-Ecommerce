@@ -14,25 +14,69 @@ const Products = () => {
   const { id } = useParams()
   const myProduct = useSelector(selectProduct).find(p => p.id === id)
   const [openIMG, setOpenIMG] = useState(false)
+  const slider = useRef(null)
 
   const openModalImg = () => {
     setOpenIMG(!openIMG)
   }
 
   const {
-    description, imgURL, isSale,
+    description, imgURL,
     nameProduct, price, priceSale, stock
   } = myProduct
+
   const myref = useRef()
   const dispatch = useDispatch()
 
-  const relatedProducts = useSelector(x => x.entities.products).slice(0, 16)
+  const relatedProducts = useSelector(selectProduct).filter(x => x.category === myProduct.category && x.id !== myProduct.id)
 
   const addToCart = e => {
     e.preventDefault()
     const inputAmount = Number(myref.current.children[1].children[1].value)
     dispatch({ type: 'cart/set', payload: { ...myProduct, amount: inputAmount } })
   }
+
+  // const moveSlide = move => {
+  //   const firstChild = slider.current.firstElementChild
+  //   const lastChild = slider.current.lastElementChild
+
+  //   if (move === 'left') {
+  //     slider.current.classList.add('ml-[100%]')
+
+  //     slider.current.classList.add(
+  //       'transition-all',
+  //       'ease-soft',
+  //       'duration-700'
+  //     )
+
+  //     setTimeout(() => {
+  //       slider.current.insertBefore(lastChild, firstChild)
+  //       slider.current.classList.remove(
+  //         'transition-all',
+  //         'ease-expo',
+  //         'duration-700'
+  //       )
+  //       slider.current.classList.remove('ml-[100%]')
+  //     }, 800)
+  //   } else {
+  //     slider.current.classList.add('-ml-[100%]')
+  //     slider.current.classList.add(
+  //       'transition-all',
+  //       'ease-expo',
+  //       'duration-700'
+  //     )
+
+  //     setTimeout(() => {
+  //       slider.current.appendChild(firstChild)
+  //       slider.current.classList.remove(
+  //         'transition-all',
+  //         'ease-expo',
+  //         'duration-700'
+  //       )
+  //       slider.current.classList.remove('-ml-[100%]')
+  //     }, 800)
+  //   }
+  // }
 
   return (
     <>
@@ -119,31 +163,34 @@ const Products = () => {
           <div className='mt-20'>
             <h2 className='text-center text-xl font-semibold mb-8'>Related products</h2>
             <div id='slider-products' className='flex items-center justify-center gap-5'>
-              <MdKeyboardArrowLeft fontSize={40} />
-              <div id='content-pr' className='flex gap-5 w-[800px]'>
-                <Card
-                  product={imgURL}
-                  desc={description}
-                  price={price}
-                  offer={isSale}
-                  priceOffer={priceSale}
-                />
-                <Card
-                  product={imgURL}
-                  desc={description}
-                  price={price}
-                  offer={isSale}
-                  priceOffer={priceSale}
-                />
-                <Card
-                  product={imgURL}
-                  desc={description}
-                  price={price}
-                  offer={isSale}
-                  priceOffer={priceSale}
-                />
+              <MdKeyboardArrowLeft fontSize={40} onClick={() => moveSlide('left')} />
+              <div id='content-pr' className='w-[800px]'>
+                <div className='w-full overflow-hidden'>
+                  <div className='w-[300%] flex gap-5' ref={slider}>
+                    {
+                      relatedProducts.map(x => {
+                        const {
+                          description, imgURL, isSale,
+                          price, priceSale, id
+                        } = x
+
+                        return (
+                          <Card
+                            key={id}
+                            product={imgURL}
+                            desc={description}
+                            price={price}
+                            offer={isSale}
+                            priceOffer={priceSale}
+                            id={id}
+                          />
+                        )
+                      })
+                    }
+                  </div>
+                </div>
               </div>
-              <MdKeyboardArrowRight fontSize={40} />
+              <MdKeyboardArrowRight fontSize={40} onClick={() => moveSlide('right')} />
             </div>
           </div>
         </section>

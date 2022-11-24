@@ -2,22 +2,18 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import Card from '../../components/cards/Card'
 import selectProducts from '../../helpers/filterProducts'
-import { motion } from 'framer-motion'
 
 const ProductsFilter = ({ categoryFilter }) => {
   const dispatch = useDispatch()
   const products = useSelector(selectProducts)
+
   useEffect(() => {
     dispatch({ type: 'filter/set', payload: { type: categoryFilter } })
   }, [categoryFilter])
 
   return (
-    <motion.div
+    <div
       className='w-full grid grid-cols-4'
-      initial={{ opacity: 0 }}
-      transition={{ ease: 'easeInOut', duration: 0.5 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
     >
       {
         products.length
@@ -38,7 +34,7 @@ const ProductsFilter = ({ categoryFilter }) => {
           : <h1>Oh no!! We have no products :(</h1>
       }
 
-    </motion.div>
+    </div>
   )
 }
 
