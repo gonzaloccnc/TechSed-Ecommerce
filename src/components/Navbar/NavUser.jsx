@@ -49,7 +49,7 @@ const NavUser = () => {
           <span className='hover:text-slate-700'>Favorites</span>
         </Link>
         <p
-          className='inline-flex items-center gap-2'
+          className='inline-flex items-center gap-2 cursor-pointer'
           onClick={openCart}
         >
           <BsCart2 fontSize='25' />
