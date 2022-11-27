@@ -1,5 +1,13 @@
 import { NavLink } from 'react-router-dom'
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
+import visa from '../../assets/payMethods/Visa.webp'
+import mastercard from '../../assets/payMethods/mastercard.webp'
+import amex from '../../assets/payMethods/amex.webp'
+import chinaUpay from '../../assets/payMethods/chinaunionpay.webp'
+import jcb from '../../assets/payMethods/jcb.webp'
+import dinners from '../../assets/payMethods/Diners.webp'
+import discover from '../../assets/payMethods/Discover.webp'
+import paypal from '../../assets/payMethods/PayPal.webp'
 
 const Footer = () => {
   return (
@@ -56,14 +64,14 @@ const Footer = () => {
       <div className='w-[95%] mx-auto border-t-2 border-solid border-mycolor py-8'>
         <p className='text-center text-sm font-light'>We accept the following paying methods</p>
         <div className='flex justify-around mx-auto py-10 w-4/5'>
-          <img className='w-14' src='../src/assets/payMethods/Visa.webp' />
-          <img className='w-14' src='../src/assets/payMethods/mastercard.webp' />
-          <img className='w-14' src='../src/assets/payMethods/amex.webp' />
-          <img className='w-14' src='../src/assets/payMethods/chinaunionpay.webp' />
-          <img className='w-14' src='../src/assets/payMethods/jcb.webp' />
-          <img className='w-14' src='../src/assets/payMethods/Diners.webp' />
-          <img className='w-14' src='../src/assets/payMethods/Discover.webp' />
-          <img className='w-14' src='../src/assets/payMethods/PayPal.webp' />
+          <img className='w-14' src={visa} />
+          <img className='w-14' src={mastercard} />
+          <img className='w-14' src={amex} />
+          <img className='w-14' src={chinaUpay} />
+          <img className='w-14' src={jcb} />
+          <img className='w-14' src={dinners} />
+          <img className='w-14' src={discover} />
+          <img className='w-14' src={paypal} />
         </div>
       </div>
       <div className='bg-mycolor'>

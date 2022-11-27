@@ -1,5 +1,6 @@
 import TypeInput from '../../components/inputs/TypeInput'
 import { motion } from 'framer-motion'
+import about from '../../assets/about/about.webp'
 
 const About = () => {
   return (
@@ -12,7 +13,7 @@ const About = () => {
     >
       <h1 className='text-center text-5xl font-semibold pb-28'>About TechSed</h1>
       <div id='about-des' className='flex py-16 border-y-2 gap-10 items-center border-solid border-mycolor w-4/5 h-[700px] mx-auto'>
-        <img src='./src/assets/about/about.webp' className='w-3/6 h-full' />
+        <img src={about} className='w-3/6 h-full' />
         <p className='w-2/5 text-lg font-light'>
           Paragraph. Click to edit and add your own text. It is easy. Click "Edit Text" or double click
           here to add your content and change the font. You can drag and drop this text wherever you want

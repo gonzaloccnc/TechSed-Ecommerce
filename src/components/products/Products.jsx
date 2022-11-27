@@ -1,14 +1,14 @@
-import { Link, useParams } from 'react-router-dom'
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
-import { TbMinusVertical } from 'react-icons/tb'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectCart, selectProduct } from '../../helpers/selectStatus'
+import { useRef, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import { TbMinusVertical } from 'react-icons/tb'
 import { AiOutlineHeart } from 'react-icons/ai'
+import { selectProduct } from '../../helpers/selectStatus'
+import ProductImage from '../modals/ProductImage'
 import TypeInput from '../inputs/TypeInput'
 import Accordion from '../accordion/Accordion'
 import Card from '../cards/Card'
-import { useRef, useState } from 'react'
-import ProductImage from '../modals/ProductImage'
 
 const Products = () => {
   const { id } = useParams()
@@ -36,60 +36,74 @@ const Products = () => {
     dispatch({ type: 'cart/set', payload: { ...myProduct, amount: inputAmount } })
   }
 
-  // const moveSlide = move => {
-  //   const firstChild = slider.current.firstElementChild
-  //   const lastChild = slider.current.lastElementChild
+  const moveSlide = move => {
+    const firstChild = [...slider.current.childNodes].slice(0, 3)
+    const lastChild = [...slider.current.childNodes].slice(4, 7)
 
-  //   if (move === 'left') {
-  //     slider.current.classList.add('ml-[100%]')
+    // fix the move to left
+    if (move === 'left') {
+      for (let i = 0; i < lastChild.length; i++) {
+        slider.current.insertBefore(lastChild[i], slider.current.firstElementChild)
+      }
 
-  //     slider.current.classList.add(
-  //       'transition-all',
-  //       'ease-soft',
-  //       'duration-700'
-  //     )
+      slider.current.classList.add('ml-[80%]')
+      slider.current.classList.add(
+        'transition-all',
+        'ease-soft',
+        'duration-700'
+      )
 
-  //     setTimeout(() => {
-  //       slider.current.insertBefore(lastChild, firstChild)
-  //       slider.current.classList.remove(
-  //         'transition-all',
-  //         'ease-expo',
-  //         'duration-700'
-  //       )
-  //       slider.current.classList.remove('ml-[100%]')
-  //     }, 800)
-  //   } else {
-  //     slider.current.classList.add('-ml-[100%]')
-  //     slider.current.classList.add(
-  //       'transition-all',
-  //       'ease-expo',
-  //       'duration-700'
-  //     )
+      slider.current.classList.remove('ml-[80%]')
+      setTimeout(() => {
+        slider.current.classList.remove(
+          'transition-all',
+          'ease-expo',
+          'duration-700'
+        )
+      }, 800)
+    } else {
+      slider.current.classList.add('-ml-[80%]')
+      slider.current.classList.add(
+        'transition-all',
+        'ease-expo',
+        'duration-700'
+      )
 
-  //     setTimeout(() => {
-  //       slider.current.appendChild(firstChild)
-  //       slider.current.classList.remove(
-  //         'transition-all',
-  //         'ease-expo',
-  //         'duration-700'
-  //       )
-  //       slider.current.classList.remove('-ml-[100%]')
-  //     }, 800)
-  //   }
-  // }
+      setTimeout(() => {
+        for (let i = 0; i < firstChild.length; i++) {
+          slider.current.appendChild(firstChild[i])
+        }
+        slider.current.classList.remove(
+          'transition-all',
+          'ease-expo',
+          'duration-700'
+        )
+        slider.current.classList.remove('-ml-[80%]')
+      }, 800)
+    }
+  }
 
   return (
     <>
       <main className='w-full h-auto bg-white py-10 mt-[164.5px]'>
         <section className='w-[890px] mx-auto'>
           <div className='flex items-center justify-between mb-10'>
-            <h1>Home / <span className='text-input'>{nameProduct} {description}</span></h1>
+            <h1>
+              <Link to='/shop/shopAll' className='cursor-pointer'>Home / </Link>
+              <span className='text-input cursor-auto'>
+                {nameProduct} {description}
+              </span>
+            </h1>
             <div className='flex items-center'>
-              <MdKeyboardArrowLeft fontSize={30} />
-              <span>Prev</span>
+              <div className='flex items-center cursor-pointer' id='prev'>
+                <MdKeyboardArrowLeft fontSize={30} />
+                <span>Prev</span>
+              </div>
               <TbMinusVertical fontSize={30} />
-              <span>Next</span>
-              <MdKeyboardArrowRight fontSize={30} />
+              <div className='flex items-center cursor-pointer' id='next'>
+                <span>Next</span>
+                <MdKeyboardArrowRight fontSize={30} />
+              </div>
             </div>
           </div>
           <section className='w-full flex justify-between'>
@@ -163,7 +177,10 @@ const Products = () => {
           <div className='mt-20'>
             <h2 className='text-center text-xl font-semibold mb-8'>Related products</h2>
             <div id='slider-products' className='flex items-center justify-center gap-5'>
-              <MdKeyboardArrowLeft fontSize={40} onClick={() => moveSlide('left')} />
+              <MdKeyboardArrowLeft
+                fontSize={40} onClick={() => moveSlide('left')}
+                className='cursor-pointer'
+              />
               <div id='content-pr' className='w-[800px]'>
                 <div className='w-full overflow-hidden'>
                   <div className='w-[300%] flex gap-5' ref={slider}>
@@ -183,6 +200,7 @@ const Products = () => {
                             offer={isSale}
                             priceOffer={priceSale}
                             id={id}
+                            cClass='w-[200px]'
                           />
                         )
                       })
@@ -190,7 +208,10 @@ const Products = () => {
                   </div>
                 </div>
               </div>
-              <MdKeyboardArrowRight fontSize={40} onClick={() => moveSlide('right')} />
+              <MdKeyboardArrowRight
+                fontSize={40} onClick={() => moveSlide('right')}
+                className='cursor-pointer'
+              />
             </div>
           </div>
         </section>
