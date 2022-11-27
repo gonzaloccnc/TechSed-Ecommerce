@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import neeson from '../../assets/errorPage-LiamNeeson.webp'
 
 const ErrorPage = ({ error, type }) => {
   return (
@@ -17,7 +18,7 @@ const ErrorPage = ({ error, type }) => {
               : ''
           }
           <img
-            src='../src/assets/errorPage-LiamNeeson.webp'
+            src={neeson}
             className='w-64 h-64 object-cover rounded-full'
           />
           {

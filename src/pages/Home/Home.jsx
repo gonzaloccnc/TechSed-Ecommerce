@@ -1,16 +1,21 @@
-import MainSlide from './MainSlide'
-import SalesCards from './SalesCards'
 import { MdOutlineDeliveryDining, MdOutlineLocalOffer } from 'react-icons/md'
-import { GoPackage } from 'react-icons/go'
 import { AiOutlineFieldTime } from 'react-icons/ai'
-import Button from '../../components/button/Button'
 import ContainerSellerCard from './ContainerSellerCard'
-import BusinessFeatures from './BusinessFeatures'
 import ContainerCategory from './ContainerCategory'
+import BusinessFeatures from './BusinessFeatures'
 import ContainerSales from './ContainerSales'
-import Brand from './Brand'
-import Subscribe from '../../components/Subscribe/Subscribe'
+import { GoPackage } from 'react-icons/go'
+import SalesCards from './SalesCards'
 import { motion } from 'framer-motion'
+import Subscribe from '../../components/Subscribe/Subscribe'
+import MainSlide from './MainSlide'
+import Button from '../../components/button/Button'
+import Brand from './Brand'
+import horizon from '../../assets/HomeImages/brands/horizon.png'
+import zodiac from '../../assets/HomeImages/brands/zodiac.png'
+import zoro from '../../assets/HomeImages/brands/zoro.png'
+import pjk from '../../assets/HomeImages/brands/pjk.png'
+import gxl from '../../assets/HomeImages/brands/gxl.png'
 
 const Home = () => {
   return (
@@ -116,11 +121,11 @@ const Home = () => {
       <section className='bg-white w-[95%] mx-auto my-10 py-14'>
         <h1 className='text-3xl text-center pb-14'>Brands</h1>
         <div className='flex justify-center'>
-          <Brand brandImg='.\src\assets\HomeImages\brands\zodiac.png' />
-          <Brand brandImg='.\src\assets\HomeImages\brands\zoro.png' />
-          <Brand brandImg='.\src\assets\HomeImages\brands\pjk.png' />
-          <Brand brandImg='.\src\assets\HomeImages\brands\gxl.png' />
-          <Brand brandImg='.\src\assets\HomeImages\brands\horizon.png' />
+          <Brand brandImg={zodiac} />
+          <Brand brandImg={zoro} />
+          <Brand brandImg={pjk} />
+          <Brand brandImg={gxl} />
+          <Brand brandImg={horizon} />
         </div>
       </section>
       <Subscribe marginTop='mt-10' marginBottom='mb-20' />
