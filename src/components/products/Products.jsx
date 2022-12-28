@@ -1,34 +1,38 @@
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { TbMinusVertical } from 'react-icons/tb'
 import { AiOutlineHeart } from 'react-icons/ai'
-import { selectProduct } from '../../helpers/selectStatus'
+import { selectCart, selectProduct } from '../../helpers/selectStatus'
 import ProductImage from '../modals/ProductImage'
 import TypeInput from '../inputs/TypeInput'
 import Accordion from '../accordion/Accordion'
 import Card from '../cards/Card'
+import { useLocalStorage } from '../../hooks/useLocalStorage'
 
 const Products = () => {
   const { id } = useParams()
   const myProduct = useSelector(selectProduct).find(p => p.id === id)
-  const [openIMG, setOpenIMG] = useState(false)
-  const slider = useRef(null)
-
-  const openModalImg = () => {
-    setOpenIMG(!openIMG)
-  }
-
   const {
     description, imgURL,
     nameProduct, price, priceSale, stock
   } = myProduct
 
-  const myref = useRef()
-  const dispatch = useDispatch()
+  const relatedProducts = useSelector(selectProduct)
+    .filter(x => x.category === myProduct.category && x.id !== myProduct.id)
 
-  const relatedProducts = useSelector(selectProduct).filter(x => x.category === myProduct.category && x.id !== myProduct.id)
+  const [, setCart] = useLocalStorage('cart', [])
+  const [openIMG, setOpenIMG] = useState(false)
+  const myCart = useSelector(selectCart)
+  const dispatch = useDispatch()
+  const slider = useRef(null)
+
+  const myref = useRef()
+
+  const openModalImg = () => {
+    setOpenIMG(!openIMG)
+  }
 
   const addToCart = e => {
     e.preventDefault()
@@ -36,51 +40,55 @@ const Products = () => {
     dispatch({ type: 'cart/set', payload: { ...myProduct, amount: inputAmount } })
   }
 
+  useEffect(() => {
+    setCart(myCart)
+  }, [myCart])
+
   const moveSlide = move => {
-    const firstChild = [...slider.current.childNodes].slice(0, 3)
-    const lastChild = [...slider.current.childNodes].slice(4, 7)
+    const firstChild = slider.current.firstElementChild
+    const lastChild = slider.current.lastElementChild
 
-    // fix the move to left
     if (move === 'left') {
-      for (let i = 0; i < lastChild.length; i++) {
-        slider.current.insertBefore(lastChild[i], slider.current.firstElementChild)
-      }
+      slider.current.classList.remove('-ml-[34.2%]')
 
-      slider.current.classList.add('ml-[80%]')
       slider.current.classList.add(
         'transition-all',
         'ease-soft',
         'duration-700'
       )
 
-      slider.current.classList.remove('ml-[80%]')
       setTimeout(() => {
         slider.current.classList.remove(
           'transition-all',
-          'ease-expo',
+          'ease-soft',
           'duration-700'
         )
+        slider.current.insertBefore(lastChild, firstChild)
+        slider.current.classList.add('-ml-[34.2%]')
       }, 800)
-    } else {
-      slider.current.classList.add('-ml-[80%]')
-      slider.current.classList.add(
+
+      return
+    }
+
+    slider.current.classList.add('-ml-[68.4%]')
+
+    slider.current.classList.add(
+      'transition-all',
+      'ease-expo',
+      'duration-700'
+    )
+
+    setTimeout(() => {
+      slider.current.classList.remove(
         'transition-all',
         'ease-expo',
         'duration-700'
       )
-
-      setTimeout(() => {
-        for (let i = 0; i < firstChild.length; i++) {
-          slider.current.appendChild(firstChild[i])
-        }
-        slider.current.classList.remove(
-          'transition-all',
-          'ease-expo',
-          'duration-700'
-        )
-        slider.current.classList.remove('-ml-[80%]')
-      }, 800)
-    }
+      slider.current.classList.remove('-ml-[34.2%]')
+      slider.current.append(firstChild)
+      slider.current.classList.remove('-ml-[68.4%]')
+      slider.current.classList.add('-ml-[34.2%]')
+    }, 800)
   }
 
   return (
@@ -181,9 +189,9 @@ const Products = () => {
                 fontSize={40} onClick={() => moveSlide('left')}
                 className='cursor-pointer'
               />
-              <div id='content-pr' className='w-[800px]'>
+              <div id='content-pr' className='w-[790px]'>
                 <div className='w-full overflow-hidden'>
-                  <div className='w-[300%] flex gap-5' ref={slider}>
+                  <div className='w-[300%] flex gap-5 -ml-[34.2%]' ref={slider}>
                     {
                       relatedProducts.map(x => {
                         const {
@@ -200,7 +208,7 @@ const Products = () => {
                             offer={isSale}
                             priceOffer={priceSale}
                             id={id}
-                            cClass='w-[200px]'
+                            cClass='w-[250px]'
                           />
                         )
                       })

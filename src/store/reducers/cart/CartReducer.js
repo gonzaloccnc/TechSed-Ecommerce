@@ -13,8 +13,13 @@ const cartReducer = createSlice({
       }
 
       return [...state, action.payload]
+    },
+    loadFromLocalStorage: (state, action) => {
+      if (action.payload.length) return [...state, ...action.payload]
+      return [...state]
     }
   }
 })
 
+export const { loadFromLocalStorage } = cartReducer.actions
 export default cartReducer.reducer

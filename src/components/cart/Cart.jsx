@@ -1,10 +1,9 @@
 import { IoMdArrowDropright } from 'react-icons/io'
-import { useSelector } from 'react-redux'
-import { selectCart } from '../../helpers/selectStatus'
 import ProductCart from './ProductCart'
 import { motion } from 'framer-motion'
+import { useLocalStorage } from '../../hooks/useLocalStorage'
 const Cart = ({ fn }) => {
-  const myCart = useSelector(selectCart)
+  const [cart] = useLocalStorage('cart', [])
   return (
     <div className='w-full bg-opacity-black h-screen fixed top-0 left-0 z-50'>
       <motion.div
@@ -21,9 +20,9 @@ const Cart = ({ fn }) => {
         </header>
         <div>
           {
-            !myCart.length
+            !cart.length
               ? <p className='text-center py-8 text-lg'>The cart is empty</p>
-              : myCart.map(prd => {
+              : cart.map(prd => {
                 const { id, imgURL, nameProduct, isSale, description, price, priceSale, amount } = prd
                 return (
                   <ProductCart

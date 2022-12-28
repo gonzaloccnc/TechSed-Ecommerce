@@ -99,7 +99,7 @@ footer .lnk-products a {
 
 .clip-figure-2 {
   clip-path: polygon(10% 0, 100% 0, 100% 100%, 20% 100%);
-  background: url("./assets/HomeImages/sepcial-day-drone.webp");
+  background: url("./assets/HomeImages/sepcial-day-drone.jpg");
   @apply bg-no-repeat bg-cover bg-right;
 }
 

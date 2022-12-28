@@ -5,6 +5,7 @@ import { BsCart2 } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import Cart from '../cart/Cart'
+import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { useSelector } from 'react-redux'
 import { selectCart } from '../../helpers/selectStatus'
 

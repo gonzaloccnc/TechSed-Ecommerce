@@ -45,6 +45,7 @@ const TypeInput = ({ type = 'text', id, title, pholder = '', width = 'w-96' }) =
             id={id}
             placeholder={pholder}
             defaultValue={type === 'number' ? 1 : ''}
+            min={type === 'number' ? 1 : ''}
           />
         </div>
       )
