@@ -70,7 +70,7 @@ aside nav a.active {
   @apply text-black font-semibold;
 }
 
-#navbar-user button:hover ~ input {
+#navbar-user button:hover~input {
   @apply border border-black bg-white;
 }
 
@@ -121,6 +121,7 @@ footer .lnk-products a {
 #progress-bar input {
   background: none;
 }
+
 #progress-bar input::-moz-range-thumb {
   @apply rounded-full bg-slate-700 appearance-none;
 }
@@ -131,4 +132,12 @@ footer .lnk-products a {
 
 #copy:hover p {
   @apply block;
+}
+
+#userOption:hover #myOptions {
+  @apply block
+}
+
+#userOption #myOptions {
+  @apply hidden
 }

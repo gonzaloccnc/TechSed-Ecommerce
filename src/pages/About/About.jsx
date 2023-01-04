@@ -1,6 +1,7 @@
-import TypeInput from '../../components/inputs/TypeInput'
 import { motion } from 'framer-motion'
 import about from '../../assets/about/about.webp'
+import ButtonSubmit from '../../components/button/ButtonSubmit'
+import WrapInput from '../../components/inputs/WrapInput'
 
 const About = () => {
   return (
@@ -30,15 +31,79 @@ const About = () => {
         <p className='text-lg font-light text-center pb-16'>
           See the job offers and opportunities that await you
         </p>
-        <form action='POST' className='flex w-[804px] mx-auto flex-wrap gap-9 items-end justify-between'>
-          <TypeInput type='text' id='name' title='Name' />
-          <TypeInput type='text' id='surname' title='Surname' />
-          <TypeInput type='text' id='email' title='Email *' />
-          <TypeInput type='text' id='phone' title='Phone' />
-          <TypeInput type='select' id='positionApply' title='Position you are applying for' />
-          <TypeInput type='date' id='date' title='Start date available' />
-          <TypeInput type='text' id='cv' title='Link to your CV' pholder='Type you URL' width='w-[70%]' />
-          <button className='w-1/5 h-12 text-white bg-purple-2  grid place-content-center py-3 rounded-full hover:bg-black transition duration-300 ease-freeze'>Send</button>
+        <form className='flex w-[804px] mx-auto flex-wrap gap-9 items-end justify-between'>
+          <WrapInput forInput='name' title='Name'>
+            <input
+              className='border-b-2 border-input
+              outline-none text-sm font-light pb-1 focus:border-black hover:border-black
+              bg-transparent'
+              type='text'
+              id='name'
+            />
+          </WrapInput>
+          <WrapInput forInput='surname' title='Surname'>
+            <input
+              className='border-b-2 border-input
+              outline-none text-sm font-light pb-1 focus:border-black hover:border-black
+              bg-transparent'
+              type='text'
+              id='surname'
+            />
+          </WrapInput>
+          <WrapInput forInput='email' title='Email *'>
+            <input
+              className='border-b-2 border-input
+              outline-none text-sm font-light pb-1 focus:border-black hover:border-black
+              bg-transparent'
+              type='email'
+              id='email'
+            />
+          </WrapInput>
+          <WrapInput forInput='phone' title='Phone'>
+            <input
+              className='border-b-2 border-input
+              outline-none text-sm font-light pb-1 focus:border-black hover:border-black
+              bg-transparent'
+              type='number'
+              maxLength='9'
+              id='phone'
+            />
+          </WrapInput>
+          <WrapInput forInput='possitionApply' title='Position you are applying for'>
+            <select
+              defaultValue='Select the position'
+              name='positionApply'
+              id='possitionApply'
+              className='outline-none border-b-2 border-input text-sm font-light pb-1
+              focus:border-black hover:border-black'
+            >
+              <option value='Select the position' disabled hidden>Select the position</option>
+              <option value='store sales'>Store sales</option>
+              <option value='store address'>Store address</option>
+              <option value='store operations'>Store operations</option>
+              <option value='factory and logistics'>Factory and logistics</option>
+              <option value='ecommerce'>eCommerce</option>
+            </select>
+          </WrapInput>
+          <WrapInput forInput='date' title='Start date available'>
+            <input
+              className='border-b-2 border-input outline-none text-sm font-light pb-1
+            focus:border-black hover:border-black bg-transparent'
+              type='date'
+              id='date'
+            />
+          </WrapInput>
+          <WrapInput forInput='cv' title='Link to your CV' extraClass='w-[70%]'>
+            <input
+              className='border-b-2 border-input
+              outline-none text-sm font-light pb-1 focus:border-black hover:border-black
+              bg-transparent'
+              type='url'
+              placeholder='Type your URL'
+              id='cv'
+            />
+          </WrapInput>
+          <ButtonSubmit extraClass='w-1/5'>Send</ButtonSubmit>
         </form>
       </div>
     </motion.main>

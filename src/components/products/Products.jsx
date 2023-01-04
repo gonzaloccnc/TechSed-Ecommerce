@@ -6,10 +6,10 @@ import { TbMinusVertical } from 'react-icons/tb'
 import { AiOutlineHeart } from 'react-icons/ai'
 import { selectCart, selectProduct } from '../../helpers/selectStatus'
 import ProductImage from '../modals/ProductImage'
-import TypeInput from '../inputs/TypeInput'
 import Accordion from '../accordion/Accordion'
 import Card from '../cards/Card'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
+import WrapInput from '../inputs/WrapInput'
 
 const Products = () => {
   const { id } = useParams()
@@ -137,7 +137,17 @@ const Products = () => {
               </div>
               <div className='mb-8' ref={myref}>
                 <span className='text-sm'>Amount</span>
-                <TypeInput type='number' width='w-16' />
+                <WrapInput forInput='phone' title='Phone' extraClass='w-16'>
+                  <input
+                    className='border py-3 px-2 border-input
+                    outline-none text-sm font-light pb-1 focus:border-black hover:border-black
+                    bg-transparent'
+                    type='number'
+                    defaultValue='1'
+                    min='1'
+                    id='quantity'
+                  />
+                </WrapInput>
               </div>
               <div className='mb-4'>
                 <div className='flex items-center justify-between mb-4'>

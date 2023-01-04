@@ -1,6 +1,7 @@
-import TypeInput from '../../components/inputs/TypeInput'
 import Subscribe from '../../components/Subscribe/Subscribe'
 import { motion } from 'framer-motion'
+import ButtonSubmit from '../../components/button/ButtonSubmit'
+import WrapInput from '../../components/inputs/WrapInput'
 
 const Contact = () => {
   return (
@@ -33,13 +34,53 @@ const Contact = () => {
           <p className='font-light pb-10'>
             Complete the form with any questions you have in mind and we will answer you as soon as possible
           </p>
-          <form action='POST' className='flex w-full mx-auto flex-wrap gap-9 items-end justify-between'>
-            <TypeInput type='text' id='name' title='Name' width='50%' />
-            <TypeInput type='text' id='surname' title='Surname' width='50%' />
-            <TypeInput type='text' id='email' title='Email *' width='50%' />
-            <TypeInput type='text' id='affair' title='Affair' width='50%' />
-            <TypeInput type='textarea' id='messageSend' title='Message' />
-            <button className='w-1/2 h-12 text-white bg-purple-2  grid place-content-center py-3 rounded-full hover:bg-black transition duration-300 ease-freeze'>Send</button>
+          <form className='flex w-full mx-auto flex-wrap gap-9 items-end justify-between'>
+            <WrapInput forInput='name' title='Name' extraClass='50%'>
+              <input
+                className='border-b-2 border-input
+                outline-none text-sm font-light pb-1 focus:border-black hover:border-black
+                bg-transparent'
+                type='text'
+                id='name'
+              />
+            </WrapInput>
+            <WrapInput forInput='surname' title='Surname' extraClass='50%'>
+              <input
+                className='border-b-2 border-input
+                outline-none text-sm font-light pb-1 focus:border-black hover:border-black
+                bg-transparent'
+                type='text'
+                id='surname'
+              />
+            </WrapInput>
+            <WrapInput forInput='email' title='Email *' extraClass='50%'>
+              <input
+                className='border-b-2 border-input
+                outline-none text-sm font-light pb-1 focus:border-black hover:border-black
+                bg-transparent'
+                type='email'
+                id='email'
+              />
+            </WrapInput>
+            <WrapInput forInput='affair' title='Affair' extraClass='50%'>
+              <input
+                className='border-b-2 border-input
+                outline-none text-sm font-light pb-1 focus:border-black hover:border-black
+                bg-transparent'
+                type='text'
+                id='affair'
+              />
+            </WrapInput>
+            <WrapInput forInput='messageSend' title='Message'>
+              <textarea
+                className='resize-none outline-none border-b-2 border-input text-sm font-light pb-1
+              focus:border-black hover:border-black'
+                name='textArea'
+                maxLength='500'
+                id='messageSend'
+              />
+            </WrapInput>
+            <ButtonSubmit>Send</ButtonSubmit>
           </form>
         </div>
       </div>
