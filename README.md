@@ -7,7 +7,11 @@ Este proyecto lo hice en modo practica, tome como referencia una plantilla en la
 * Redux toolkit
 * Tailwind CSS
 * React icons
-* Vite js como entorno
+* ViteJS
+
+## Backend consumido
+Aquel pryecto personal que hice y fui mejorando con el tiempo, esta hecho con express,jwt,mongoose.
+* https://github.com/gonzaloccnc/api-eccomerce
 
 # Run project
 * npm run dev
