@@ -1,33 +1,26 @@
 import { useRef, useEffect, useState } from 'react'
-
 import Button from '../../components/button/Button'
 
-const slides = new Map([[1, 'bg-home-slide1'], [2, 'bg-home-slide2'], [3, 'bg-home-slide3']])
-
 const MainSlide = () => {
-  const [slide, setSlide] = useState(1)
+  const images = ['bg-home-slide1', 'bg-home-slide2', 'bg-home-slide3']
+  const [slide, setSlide] = useState(images[0])
   const slideRef = useRef(null)
-  const slideChange = slides.get(slide)
 
   useEffect(() => {
-    if (slide > 3) {
-      setSlide(1)
-    } else {
+    const interval = setInterval(() => {
+      slideRef.current.classList.add('opacity-0')
       setTimeout(() => {
-        slideRef.current.style.opacity = 0.3
-      }, 5800)
-
-      setTimeout(() => {
-        slideRef.current.style.opacity = 1
-        setSlide(state => ++state)
-      }, 6000)
-    }
+        slideRef.current.classList.remove('opacity-0')
+        setSlide(images[(images.indexOf(slide) + 1) % images.length])
+      }, 200)
+    }, 4000)
+    return () => clearInterval(interval)
   }, [slide])
 
   return (
     <section className='relative w-full h-[90vh] grid place-content-center bg-no-repeat mt-[164.5px]'>
       <div
-        className={`absolute ${slideChange} w-full h-full top-0 bg-center bg-cover transition-opacity ease-easeInOut`}
+        className={`absolute ${slide} w-full h-full top-0 bg-center bg-cover transition-opacity ease-easeInOut`}
         ref={slideRef}
       />
       <div className='-translate-x-1/2'>

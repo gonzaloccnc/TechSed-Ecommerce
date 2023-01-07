@@ -14,6 +14,13 @@ const cartReducer = createSlice({
 
       return [...state, action.payload]
     },
+
+    delete: (state, action) => {
+      const products = [...state.filter(x => x.id !== action.payload)]
+      window.localStorage.setItem('cart', JSON.stringify(products))
+      return [...products]
+    },
+
     loadFromLocalStorage: (state, action) => {
       if (action.payload.length) return [...state, ...action.payload]
       return [...state]

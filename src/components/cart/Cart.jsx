@@ -1,45 +1,43 @@
 import { IoMdArrowDropright } from 'react-icons/io'
-import ProductCart from './ProductCart'
-import { motion } from 'framer-motion'
-import { useLocalStorage } from '../../hooks/useLocalStorage'
+import MapCartProducts from './MapCartProducts'
+import { useEffect } from 'react'
+
 const Cart = ({ fn }) => {
-  const [cart] = useLocalStorage('cart', [])
+  const closeModal = () => {
+    const cartModal = document.querySelector('#cart-modal')
+    cartModal.style.transition = 'all ease-out .5s'
+    cartModal.style.transform = 'translateX(0px)'
+
+    setTimeout(() => {
+      fn()
+    }, 500)
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      const cartModal = document.querySelector('#cart-modal')
+      cartModal.classList.add('translate-x-[-350px]')
+    }, 500)
+  }, [])
+
   return (
     <div className='w-full bg-opacity-black h-screen fixed top-0 left-0 z-50'>
-      <motion.div
-        className='w-[350px] h-full bg-white absolute -right-[350px]'
-        animate={{ x: -350 }}
-        transition={{ ease: 'easeOut', duration: 0.5 }}
+      <div
+        id='cart-modal'
+        className='w-[350px] h-full bg-white absolute right-[-350px] ease-out transition-all
+        duration-500 overflow-auto'
       >
         <header
           className='text-white flex items-center text-3xl  px-4 gap-24 h-[100px] bg-black font-light cursor-pointer'
-          onClick={fn}
+          onClick={closeModal}
         >
           <IoMdArrowDropright />
           <h1 className=''>Cart</h1>
         </header>
         <div>
-          {
-            !cart.length
-              ? <p className='text-center py-8 text-lg'>The cart is empty</p>
-              : cart.map(prd => {
-                const { id, imgURL, nameProduct, isSale, description, price, priceSale, amount } = prd
-                return (
-                  <ProductCart
-                    key={id}
-                    img={imgURL}
-                    name={nameProduct}
-                    desc={description}
-                    price={price}
-                    priceSale={priceSale}
-                    amount={amount}
-                    isSale={isSale}
-                  />
-                )
-              })
-          }
+          <MapCartProducts />
         </div>
-      </motion.div>
+      </div>
     </div>
   )
 }

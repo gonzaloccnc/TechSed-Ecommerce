@@ -10,6 +10,8 @@ import discover from '../../assets/payMethods/Discover.webp'
 import paypal from '../../assets/payMethods/PayPal.webp'
 
 const Footer = () => {
+  const getYear = new Date(Date.now()).getFullYear()
+
   return (
     <footer className='bg-white'>
       <div className='p-16 pb-0 flex justify-between mb-44'>
@@ -76,7 +78,7 @@ const Footer = () => {
       </div>
       <div className='bg-mycolor'>
         <h3 className='text-center py-3'>
-          © 2023 by TechShed. Proudly created with <a href='www.wix.com' className='underline'>Wix.com</a>
+          © {getYear} by TechShed. Proudly created with <a href='www.wix.com' className='underline'>Wix.com</a>
         </h3>
       </div>
     </footer>

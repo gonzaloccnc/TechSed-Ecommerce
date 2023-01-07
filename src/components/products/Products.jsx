@@ -137,7 +137,7 @@ const Products = () => {
               </div>
               <div className='mb-8' ref={myref}>
                 <span className='text-sm'>Amount</span>
-                <WrapInput forInput='phone' title='Phone' extraClass='w-16'>
+                <WrapInput forInput='phone' extraClass='w-16'>
                   <input
                     className='border py-3 px-2 border-input
                     outline-none text-sm font-light pb-1 focus:border-black hover:border-black

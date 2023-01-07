@@ -1,15 +1,22 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { AiFillCloseCircle } from 'react-icons/ai'
 import SubAuth from './SubAuth'
 import WrapInput from '../../components/inputs/WrapInput'
 import Loading from '../../components/loading/Loading'
 
 const Auth = ({ close, fn }) => {
-  const closeModal = () => fn(!close)
+  const closeModal = () => {
+    authref.current.classList.add('opacity-0')
+    setTimeout(() => {
+      fn(!close)
+    }, 200)
+  }
   const [openLogin, setOpenLogin] = useState(true)
+  const [error, setError] = useState('')
   const [isLogin, setisLogin] = useState(false)
   const [load, setLoading] = useState(false)
-  // no cierra fix
+  const authref = useRef(null)
+
   const signUp = async (e) => {
     setLoading(true)
     e.preventDefault()
@@ -33,6 +40,7 @@ const Auth = ({ close, fn }) => {
       document.cookie = `token=${res.token}; expires=${limit}`
       setisLogin(true)
     } catch (ex) {
+      setError('Please try another email or username')
     } finally {
       setLoading(false)
     }
@@ -56,18 +64,32 @@ const Auth = ({ close, fn }) => {
       document.cookie = `token=${res.token}; expires=${limit}`
       setisLogin(true)
     } catch (ex) {
+      setError('Wrong username or password')
     } finally {
       setLoading(false)
     }
   }
 
   useEffect(() => {
-    if (isLogin) fn(!close)
-  }, [isLogin])
+    setTimeout(function () {
+      setError('')
+    }, 4000)
+  }, [error])
 
+  useEffect(() => {
+    setTimeout(() => {
+      authref.current.classList.remove('opacity-0')
+    }, 200)
+    if (isLogin) closeModal()
+  }, [isLogin])
+  console.log('errr')
   return (
     <>
-      <section className='w-full h-screen flex bg-white absolute top-0 left-0 z-50'>
+      <section
+        ref={authref}
+        className='w-full h-screen flex bg-white absolute top-0 left-0 z-50 opacity-0
+        transition-all duration-200 ease-freeze'
+      >
         <AiFillCloseCircle
           onClick={closeModal}
           className='absolute right-5'
@@ -107,6 +129,7 @@ const Auth = ({ close, fn }) => {
                     id='password'
                   />
                 </WrapInput>
+                <p className='text-red-600 font-bold text-xl'>{error || null}</p>
               </SubAuth>
               )
             : (
@@ -143,6 +166,7 @@ const Auth = ({ close, fn }) => {
                     id='password'
                   />
                 </WrapInput>
+                <p className='text-red-600 font-bold text-xl'>{error || null}</p>
               </SubAuth>
               )
         }

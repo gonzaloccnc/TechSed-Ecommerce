@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 const Card = ({ product, desc, price, offer, priceOffer, id, cClass }) => {
   return (
-    <div className={`${cClass || ''} border border-input flex flex-col p-2 gap-5 relative`}>
+    <div id='card' className={`${cClass || ''} border border-input flex flex-col p-2 gap-5 relative`}>
       {
         offer
           ? <p className='z-40 bg-red-600 absolute text-white px-3 top-0 left-0'>SALE</p>

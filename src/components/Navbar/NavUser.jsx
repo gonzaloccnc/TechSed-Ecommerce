@@ -10,6 +10,7 @@ import { selectCart } from '../../helpers/selectStatus'
 import Auth from '../../pages/auth/Auth'
 import jwtDecode from 'jwt-decode'
 import NavOptionsUser from './NavOptionsUser'
+import PortalModal from '../modals/PortalModal'
 
 const NavUser = () => {
   const [cart, setCart] = useState(false)
@@ -31,7 +32,7 @@ const NavUser = () => {
       setUser(decode)
     }
   }, [login])
-  console.log(user)
+
   return (
     <>
       <nav
@@ -91,12 +92,12 @@ const NavUser = () => {
         </div>
         {
         cart
-          ? <Cart fn={openCart} />
+          ? <PortalModal><Cart fn={openCart} /></PortalModal>
           : ''
       }
       </nav>
       {
-        login ? <Auth close={login} fn={setLogin} /> : null
+        login ? <PortalModal><Auth close={login} fn={setLogin} /></PortalModal> : null
       }
     </>
   )
